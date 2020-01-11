@@ -16,8 +16,9 @@ spring:
     dynamic:
       primary: blog
       strict: true
+      p6spy: true
       druid:
-        filters: stat,wall
+        filters: stat
         initial-size: 100
         min-idle: 60
         max-wait: 6000
