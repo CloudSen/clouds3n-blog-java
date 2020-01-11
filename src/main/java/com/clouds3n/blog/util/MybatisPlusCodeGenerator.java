@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -27,8 +28,8 @@ public class MybatisPlusCodeGenerator {
     private static final String USER_NAME = "root";
     private static final String USER_PWD = "cloudsen";
     private static final String PARENT_PACKAGE = "com.clouds3n.blog.business";
-    private static final String OUTPUT_PATH = "\\src\\main\\java\\com\\clouds3n\\blog\\business";
-    private static final String SQL_XML_LOCATION = "\\src\\main\\resources\\mapper";
+    private static final String OUTPUT_PATH = "/src/main/java/";
+    private static final String SQL_XML_LOCATION = "/src/main/resources/mapper/";
 
     /**
      * <p>
@@ -71,7 +72,7 @@ public class MybatisPlusCodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName(scanner("包名"));
+        pc.setModuleName(scanner("模块名"));
         pc.setParent(PARENT_PACKAGE);
         mpg.setPackageInfo(pc);
 
@@ -94,7 +95,7 @@ public class MybatisPlusCodeGenerator {
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
                 return projectPath + SQL_XML_LOCATION + pc.getModuleName()
-                    + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+                    + File.separator + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
         cfg.setFileOutConfigList(focList);
