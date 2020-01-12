@@ -27,7 +27,6 @@ public class MybatisPlusCodeGenerator {
     private static final String DRIVER = "org.mariadb.jdbc.Driver";
     private static final String USER_NAME = "root";
     private static final String USER_PWD = "cloudsen";
-    private static final String PARENT_PACKAGE = "com.clouds3n.blog.business";
     private static final String OUTPUT_PATH = "/src/main/java/";
     private static final String SQL_XML_LOCATION = "/src/main/resources/mapper/";
 
@@ -73,7 +72,7 @@ public class MybatisPlusCodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(scanner("模块名"));
-        pc.setParent(PARENT_PACKAGE);
+        pc.setParent(scanner("父包名"));
         mpg.setPackageInfo(pc);
 
         // 自定义配置
