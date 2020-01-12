@@ -1,9 +1,9 @@
-package com.clouds3n.blog.business.header.service.impl;
+package com.clouds3n.blog.api.header.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.clouds3n.blog.business.header.entity.Encouragement;
-import com.clouds3n.blog.business.header.mapper.EncouragementMapper;
-import com.clouds3n.blog.business.header.service.IEncouragementService;
+import com.clouds3n.blog.api.header.entity.Encouragement;
+import com.clouds3n.blog.api.header.mapper.EncouragementMapper;
+import com.clouds3n.blog.api.header.service.IEncouragementService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,7 +1,7 @@
-package com.clouds3n.blog.business.header.controller;
+package com.clouds3n.blog.api.header.controller;
 
 
-import com.clouds3n.blog.business.header.service.IEncouragementService;
+import com.clouds3n.blog.api.header.service.IEncouragementService;
 import com.clouds3n.blog.common.Res;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

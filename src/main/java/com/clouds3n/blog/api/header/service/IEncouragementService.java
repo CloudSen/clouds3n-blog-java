@@ -1,7 +1,7 @@
-package com.clouds3n.blog.business.header.service;
+package com.clouds3n.blog.api.header.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.clouds3n.blog.business.header.entity.Encouragement;
+import com.clouds3n.blog.api.header.entity.Encouragement;
 
 /**
  * <p>

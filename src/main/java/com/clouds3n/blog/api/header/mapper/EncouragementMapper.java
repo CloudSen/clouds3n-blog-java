@@ -1,7 +1,7 @@
-package com.clouds3n.blog.business.header.mapper;
+package com.clouds3n.blog.api.header.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.clouds3n.blog.business.header.entity.Encouragement;
+import com.clouds3n.blog.api.header.entity.Encouragement;
 
 /**
  * <p>
