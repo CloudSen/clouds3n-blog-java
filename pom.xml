@@ -24,6 +24,7 @@
     <mariadb.connector.version>2.5.3</mariadb.connector.version>
     <druid.starter.version>1.1.21</druid.starter.version>
     <p6spy.version>3.8.0</p6spy.version>
+    <fastjson.version>1.2.62</fastjson.version>
   </properties>
 
   <dependencies>
@@ -110,6 +111,11 @@
       <groupId>p6spy</groupId>
       <artifactId>p6spy</artifactId>
       <version>${p6spy.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>${fastjson.version}</version>
     </dependency>
   </dependencies>
 
