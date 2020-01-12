@@ -13,5 +13,4 @@ import com.clouds3n.blog.dashboard.datasource.entity.Datasource;
  */
 public interface DatasourceMapper extends BaseMapper<Datasource> {
 
-
 }

@@ -75,5 +75,10 @@ public class Datasource implements Serializable {
      */
     private Boolean deleted;
 
+    /**
+     * 备注
+     */
+    private String comment;
+
 
 }

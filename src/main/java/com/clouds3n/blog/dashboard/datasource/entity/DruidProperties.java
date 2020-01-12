@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.hibernate.validator.constraints.Range;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -30,16 +32,22 @@ public class DruidProperties implements Serializable {
     /**
      * 初始化大小
      */
+    @NotNull
+    @Range(min = 50, max = 1000)
     private Integer initialSize;
 
     /**
      * 最大连接数
      */
+    @NotNull
+    @Range(min = 100, max = 3000)
     private Integer maxActive;
 
     /**
      * 最小空闲连接数
      */
+    @NotNull
+    @Range(min = 40, max = 60)
     private Integer minIdle;
 
     /**
@@ -71,6 +79,11 @@ public class DruidProperties implements Serializable {
      * 更新时间
      */
     private LocalDateTime updateTime;
+
+    /**
+     * 备注
+     */
+    private String comment;
 
 
 }
