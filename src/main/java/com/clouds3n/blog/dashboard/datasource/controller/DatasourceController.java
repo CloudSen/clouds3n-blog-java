@@ -1,7 +1,6 @@
 package com.clouds3n.blog.dashboard.datasource.controller;
 
 
-import com.clouds3n.blog.dashboard.datasource.service.IDatasourceService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,12 +15,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/dashboard/datasource")
 public class DatasourceController {
-
-    private final IDatasourceService datasourceService;
-
-    public DatasourceController(IDatasourceService datasourceService) {
-        this.datasourceService = datasourceService;
-    }
-
 
 }
