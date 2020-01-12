@@ -1,0 +1,727 @@
+{
+  "info": {
+    "_postman_id": "b4cb38a8-f45f-45d1-9fb6-98029007f752",
+    "name": "Blog",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "header",
+          "item": [],
+          "protocolProfileBehavior": {},
+          "_postman_isSubFolder": true
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "dashborad",
+      "item": [
+        {
+          "name": "datasource",
+          "item": [
+            {
+              "name": "新增Druid配置",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"initialSize\": 200,\n    \"maxActive\": 500,\n    \"minIdle\": 60,\n    \"maxWait\": 6000,\n    \"testWhileIdle\": true,\n    \"validationQuery\": \"select 1\",\n    \"comment\": \"新增测试2\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{address}}/dashboard/datasource/druid-properties",
+                  "host": [
+                    "{{address}}"
+                  ],
+                  "path": [
+                    "dashboard",
+                    "datasource",
+                    "druid-properties"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "新增Druid配置",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"initialSize\": 200,\n    \"maxActive\": 500,\n    \"minIdle\": 60,\n    \"maxWait\": 6000,\n    \"testWhileIdle\": true,\n    \"validationQuery\": \"select 1\",\n    \"comment\": \"新增测试2\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/dashboard/datasource/druid-properties",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "datasource",
+                        "druid-properties"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 12 Jan 2020 16:12:49 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": true\n}"
+                }
+              ]
+            },
+            {
+              "name": "查询Druid配置",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n\t{\n\t  \"column\": \"uuid\",\n\t  \"value\": \"bff2afd40592\",\n\t  \"queryType\": \"notLike\"\n\t},\n\t{\n\t  \"column\": \"comment\",\n\t  \"value\": \"新增\",\n\t  \"queryType\": \"like\"\n\t}\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{address}}/dashboard/datasource/druid-properties/query",
+                  "host": [
+                    "{{address}}"
+                  ],
+                  "path": [
+                    "dashboard",
+                    "datasource",
+                    "druid-properties",
+                    "query"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "单字段全模糊不匹配查询",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n\t{\n\t  \"column\": \"uuid\",\n\t  \"value\": \"bff2afd40592\",\n\t  \"queryType\": \"notLike\"\n\t}\n]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/dashboard/datasource/druid-properties/query",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "datasource",
+                        "druid-properties",
+                        "query"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 12 Jan 2020 16:37:02 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"448fa1fe6be8d9eadb212b94f9639951\",\n            \"initialSize\": 200,\n            \"maxActive\": 500,\n            \"minIdle\": 60,\n            \"maxWait\": 6000,\n            \"testWhileIdle\": true,\n            \"validationQuery\": \"select 1\",\n            \"createTime\": \"2020-01-13T00:12:49\",\n            \"deleted\": false,\n            \"updateTime\": \"2020-01-13T00:12:49\",\n            \"comment\": \"新增测试2\"\n        }\n    ]\n}"
+                },
+                {
+                  "name": "单字段左模糊查询",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n\t{\n\t  \"column\": \"uuid\",\n\t  \"value\": \"4f9639951\",\n\t  \"queryType\": \"leftLike\"\n\t}\n]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/dashboard/datasource/druid-properties/query",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "datasource",
+                        "druid-properties",
+                        "query"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 12 Jan 2020 16:35:10 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"448fa1fe6be8d9eadb212b94f9639951\",\n            \"initialSize\": 200,\n            \"maxActive\": 500,\n            \"minIdle\": 60,\n            \"maxWait\": 6000,\n            \"testWhileIdle\": true,\n            \"validationQuery\": \"select 1\",\n            \"createTime\": \"2020-01-13T00:12:49\",\n            \"deleted\": false,\n            \"updateTime\": \"2020-01-13T00:12:49\",\n            \"comment\": \"新增测试2\"\n        }\n    ]\n}"
+                },
+                {
+                  "name": "单字段不等查询",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n\t{\n\t  \"column\": \"uuid\",\n\t  \"value\": \"448fa1fe6be8d9eadb212b94f9639951\",\n\t  \"queryType\": \"ne\"\n\t}\n]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/dashboard/datasource/druid-properties/query",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "datasource",
+                        "druid-properties",
+                        "query"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 12 Jan 2020 16:36:10 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"514f3f92bff2afd40592d04df3d5122a\",\n            \"initialSize\": 200,\n            \"maxActive\": 500,\n            \"minIdle\": 60,\n            \"maxWait\": 6000,\n            \"testWhileIdle\": true,\n            \"validationQuery\": \"select 1\",\n            \"createTime\": \"2020-01-13T00:12:07\",\n            \"deleted\": false,\n            \"updateTime\": \"2020-01-13T00:12:07\",\n            \"comment\": \"新增测试\"\n        }\n    ]\n}"
+                },
+                {
+                  "name": "不带查询参数",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/dashboard/datasource/druid-properties/query",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "datasource",
+                        "druid-properties",
+                        "query"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 12 Jan 2020 16:15:11 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"448fa1fe6be8d9eadb212b94f9639951\",\n            \"initialSize\": 200,\n            \"maxActive\": 500,\n            \"minIdle\": 60,\n            \"maxWait\": 6000,\n            \"testWhileIdle\": true,\n            \"validationQuery\": \"select 1\",\n            \"createTime\": \"2020-01-13T00:12:49\",\n            \"deleted\": false,\n            \"updateTime\": \"2020-01-13T00:12:49\",\n            \"comment\": \"新增测试2\"\n        },\n        {\n            \"uuid\": \"514f3f92bff2afd40592d04df3d5122a\",\n            \"initialSize\": 200,\n            \"maxActive\": 500,\n            \"minIdle\": 60,\n            \"maxWait\": 6000,\n            \"testWhileIdle\": true,\n            \"validationQuery\": \"select 1\",\n            \"createTime\": \"2020-01-13T00:12:07\",\n            \"deleted\": false,\n            \"updateTime\": \"2020-01-13T00:12:07\",\n            \"comment\": \"新增测试\"\n        }\n    ]\n}"
+                },
+                {
+                  "name": "多字段精确匹配查询",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n\t{\n\t  \"column\": \"uuid\",\n\t  \"value\": \"448fa1fe6be8d9eadb212b94f9639951\",\n\t  \"queryType\": \"eq\"\n\t},\n\t{\n\t  \"column\": \"comment\",\n\t  \"value\": \"新增测试2\",\n\t  \"queryType\": \"eq\"\n\t}\n]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/dashboard/datasource/druid-properties/query",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "datasource",
+                        "druid-properties",
+                        "query"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 12 Jan 2020 16:18:04 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"448fa1fe6be8d9eadb212b94f9639951\",\n            \"initialSize\": 200,\n            \"maxActive\": 500,\n            \"minIdle\": 60,\n            \"maxWait\": 6000,\n            \"testWhileIdle\": true,\n            \"validationQuery\": \"select 1\",\n            \"createTime\": \"2020-01-13T00:12:49\",\n            \"deleted\": false,\n            \"updateTime\": \"2020-01-13T00:12:49\",\n            \"comment\": \"新增测试2\"\n        }\n    ]\n}"
+                },
+                {
+                  "name": "一个字段精确匹配查询",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n\t{\n\t  \"column\": \"uuid\",\n\t  \"value\": \"448fa1fe6be8d9eadb212b94f9639951\",\n\t  \"queryType\": \"eq\"\n\t}\n]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/dashboard/datasource/druid-properties/query",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "datasource",
+                        "druid-properties",
+                        "query"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 12 Jan 2020 16:17:08 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"448fa1fe6be8d9eadb212b94f9639951\",\n            \"initialSize\": 200,\n            \"maxActive\": 500,\n            \"minIdle\": 60,\n            \"maxWait\": 6000,\n            \"testWhileIdle\": true,\n            \"validationQuery\": \"select 1\",\n            \"createTime\": \"2020-01-13T00:12:49\",\n            \"deleted\": false,\n            \"updateTime\": \"2020-01-13T00:12:49\",\n            \"comment\": \"新增测试2\"\n        }\n    ]\n}"
+                },
+                {
+                  "name": "单字段全模糊查询",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n\t{\n\t  \"column\": \"uuid\",\n\t  \"value\": \"e8d9eadb2\",\n\t  \"queryType\": \"like\"\n\t}\n]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/dashboard/datasource/druid-properties/query",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "datasource",
+                        "druid-properties",
+                        "query"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 12 Jan 2020 16:20:43 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"448fa1fe6be8d9eadb212b94f9639951\",\n            \"initialSize\": 200,\n            \"maxActive\": 500,\n            \"minIdle\": 60,\n            \"maxWait\": 6000,\n            \"testWhileIdle\": true,\n            \"validationQuery\": \"select 1\",\n            \"createTime\": \"2020-01-13T00:12:49\",\n            \"deleted\": false,\n            \"updateTime\": \"2020-01-13T00:12:49\",\n            \"comment\": \"新增测试2\"\n        }\n    ]\n}"
+                },
+                {
+                  "name": "单字段右模糊查询",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n\t{\n\t  \"column\": \"uuid\",\n\t  \"value\": \"448fa1fe6\",\n\t  \"queryType\": \"rightLike\"\n\t}\n]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/dashboard/datasource/druid-properties/query",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "datasource",
+                        "druid-properties",
+                        "query"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 12 Jan 2020 16:35:24 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"448fa1fe6be8d9eadb212b94f9639951\",\n            \"initialSize\": 200,\n            \"maxActive\": 500,\n            \"minIdle\": 60,\n            \"maxWait\": 6000,\n            \"testWhileIdle\": true,\n            \"validationQuery\": \"select 1\",\n            \"createTime\": \"2020-01-13T00:12:49\",\n            \"deleted\": false,\n            \"updateTime\": \"2020-01-13T00:12:49\",\n            \"comment\": \"新增测试2\"\n        }\n    ]\n}"
+                },
+                {
+                  "name": "多字段复合查询",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n\t{\n\t  \"column\": \"uuid\",\n\t  \"value\": \"bff2afd40592\",\n\t  \"queryType\": \"notLike\"\n\t},\n\t{\n\t  \"column\": \"comment\",\n\t  \"value\": \"新增\",\n\t  \"queryType\": \"like\"\n\t}\n]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/dashboard/datasource/druid-properties/query",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "dashboard",
+                        "datasource",
+                        "druid-properties",
+                        "query"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 12 Jan 2020 16:38:06 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"448fa1fe6be8d9eadb212b94f9639951\",\n            \"initialSize\": 200,\n            \"maxActive\": 500,\n            \"minIdle\": 60,\n            \"maxWait\": 6000,\n            \"testWhileIdle\": true,\n            \"validationQuery\": \"select 1\",\n            \"createTime\": \"2020-01-13T00:12:49\",\n            \"deleted\": false,\n            \"updateTime\": \"2020-01-13T00:12:49\",\n            \"comment\": \"新增测试2\"\n        }\n    ]\n}"
+                }
+              ]
+            }
+          ],
+          "protocolProfileBehavior": {},
+          "_postman_isSubFolder": true
+        }
+      ],
+      "protocolProfileBehavior": {}
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
