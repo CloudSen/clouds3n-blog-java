@@ -23,6 +23,7 @@ CREATE TABLE `datasource`
     `create_time`         DATETIME     NOT NULL DEFAULT current_timestamp() COMMENT '创建时间',
     `update_time`         DATETIME     NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '更新时间',
     `deleted`             TINYINT(1)   NOT NULL DEFAULT 0 COMMENT '0未删除，1已删除',
+    `comment`             VARCHAR(500) NULL     DEFAULT NULL COMMENT '备注',
     PRIMARY KEY (`uuid`)
 )
     COMMENT ='动态数据源'
@@ -44,6 +45,7 @@ CREATE TABLE `druid_properties`
     `create_time`      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT '创建时间',
     `update_time`      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT '更新时间',
     `deleted`          TINYINT(1)   NOT NULL DEFAULT 0 COMMENT '0未删除，1删除',
+    `comment`          VARCHAR(500) NULL     DEFAULT NULL COMMENT '备注',
     PRIMARY KEY (`uuid`)
 )
     ENGINE = InnoDB
