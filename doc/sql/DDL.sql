@@ -50,3 +50,41 @@ CREATE TABLE `druid_properties`
 )
     ENGINE = InnoDB
 ;
+
+
+CREATE TABLE `about_me`
+(
+    `uuid`        VARCHAR(32) NOT NULL COMMENT 'UUID-32',
+    `introduce`   TEXT        NULL     DEFAULT NULL COMMENT '介绍，md语法',
+    `code`        TEXT        NULL     DEFAULT NULL COMMENT '代码展示，md语法',
+    `contact`     TEXT        NULL     DEFAULT NULL COMMENT '联系我，md语法',
+    `copyright`   TEXT        NULL     DEFAULT '若没有特殊声明，所有文章均使用 **[CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.zh)** 协议授权，请注明作者和链接。' COMMENT '版权信息，md语法',
+    `create_time` DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT '创建时间',
+    `update_time` DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT '更新时间',
+    `deleted`     TINYINT(1)  NOT NULL DEFAULT 0 COMMENT '是否已删除，0未删除，1已删除',
+    PRIMARY KEY (`uuid`)
+)
+    COMMENT ='关于我'
+    COLLATE = 'utf8_general_ci'
+    ENGINE = InnoDB
+;
+
+
+CREATE TABLE `drawer_menu`
+(
+    `uuid`        VARCHAR(32)  NOT NULL COMMENT 'UUID-32',
+    `parent_id`   VARCHAR(32)  NOT NULL COMMENT '父菜单UUID-32',
+    `item_type`   TINYINT(2)   NOT NULL DEFAULT 2 COMMENT '菜单类型。0：菜单组，1：父类菜单项，2：普通菜单项',
+    `name`        VARCHAR(32)  NOT NULL COMMENT '菜单名',
+    `router_path` VARCHAR(100) NOT NULL COMMENT '前端路由路径',
+    `icon_name`   VARCHAR(50)  NOT NULL COMMENT '图标名，如info，timeline',
+    `order`       TINYINT(2)   NOT NULL COMMENT '排序，越大越往后',
+    `create_time` DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT '创建时间',
+    `update_time` DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT '更新时间',
+    `deleted`     TINYINT(1)   NOT NULL DEFAULT 0 COMMENT '是否已删除，0未删除，1已删除',
+    PRIMARY KEY (`uuid`)
+)
+    COMMENT ='抽屉菜单'
+    COLLATE = 'utf8_general_ci'
+;
+
