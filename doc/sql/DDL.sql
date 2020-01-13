@@ -92,3 +92,35 @@ CREATE TABLE `drawer_menu`
     ENGINE = InnoDB
 ;
 
+CREATE TABLE `article_tag`
+(
+    `uuid`        VARCHAR(32) NOT NULL COMMENT 'UUID-32',
+    `name`        VARCHAR(20) NOT NULL COMMENT '标签名',
+    `color`       VARCHAR(20) NOT NULL COMMENT '色彩css，如blue lighten-1',
+    `create_time` DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT '创建时间',
+    `update_time` DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT '更新时间',
+    `deleted`     TINYINT(1)  NOT NULL DEFAULT 0 COMMENT '是否已删除，0未删除，1已删除',
+    PRIMARY KEY (`uuid`)
+)
+    COMMENT ='文章标签表'
+    COLLATE = 'utf8_general_ci'
+    ENGINE = InnoDB
+;
+
+CREATE TABLE `article`
+(
+    `uuid`        VARCHAR(32)  NOT NULL COMMENT 'UUID-32',
+    `title`       VARCHAR(100) NOT NULL COMMENT '文章标题',
+    `summary`     VARCHAR(400) NOT NULL COMMENT '文章摘要',
+    `img_url_md`  VARCHAR(500) NULL COMMENT '文章卡片背景图片url',
+    `read_count`  INT          NOT NULL DEFAULT 0 COMMENT '阅读数，超过999就保存999',
+    `create_time` DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP() COMMENT '创建时间',
+    `update_time` DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP() COMMENT '更新时间',
+    `deleted`     TINYINT(1)   NOT NULL DEFAULT 0 COMMENT '是否已删除，0未删除，1已删除',
+    PRIMARY KEY (`uuid`)
+)
+    COMMENT ='文章表'
+    COLLATE = 'utf8_general_ci'
+    ENGINE = InnoDB
+;
+
