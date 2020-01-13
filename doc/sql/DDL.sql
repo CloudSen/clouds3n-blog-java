@@ -9,6 +9,7 @@ CREATE TABLE `encouragement`
 )
     COMMENT ='励志短语'
     COLLATE = 'utf8_general_ci'
+    ENGINE = InnoDB
 ;
 
 CREATE TABLE `datasource`
@@ -48,6 +49,8 @@ CREATE TABLE `druid_properties`
     `comment`          VARCHAR(500) NULL     DEFAULT NULL COMMENT '备注',
     PRIMARY KEY (`uuid`)
 )
+    COMMENT ='Druid参数'
+    COLLATE = 'utf8_general_ci'
     ENGINE = InnoDB
 ;
 
@@ -86,5 +89,6 @@ CREATE TABLE `drawer_menu`
 )
     COMMENT ='抽屉菜单'
     COLLATE = 'utf8_general_ci'
+    ENGINE = InnoDB
 ;
 
