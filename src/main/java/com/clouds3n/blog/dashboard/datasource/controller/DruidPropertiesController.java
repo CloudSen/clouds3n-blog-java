@@ -44,7 +44,7 @@ public class DruidPropertiesController {
     }
 
     @PostMapping
-    public Res create(@RequestBody @Validated DruidProperties druidProperties) {
+    public Res saveOrUpdate(@RequestBody @Validated DruidProperties druidProperties) {
         druidPropertiesService.saveOrUpdate(druidProperties);
         return Res.ok(druidProperties.getUuid());
     }
