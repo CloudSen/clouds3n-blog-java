@@ -1,7 +1,7 @@
 package com.clouds3n.blog.dashboard.datasource.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.clouds3n.blog.common.QueryConditionDto;
 import com.clouds3n.blog.common.Res;
 import com.clouds3n.blog.dashboard.datasource.entity.DruidProperties;
@@ -35,8 +35,12 @@ public class DruidPropertiesController {
 
     @PostMapping("/query")
     public Res query(@RequestBody @Validated List<QueryConditionDto> conditionList) throws IllegalAccessException {
-        QueryWrapper<DruidProperties> queryWrapper = QueryWrapperUtil.parseWhereSql(conditionList, new DruidProperties());
-        return Res.ok(druidPropertiesService.list(queryWrapper));
+        return Res.ok(druidPropertiesService.list(QueryWrapperUtil.parseWhereSql(conditionList, new DruidProperties())));
+    }
+
+    @PostMapping("/page")
+    public Res queryPage(Page<DruidProperties> page, List<QueryConditionDto> conditionList) throws IllegalAccessException {
+        return Res.ok(druidPropertiesService.page(page, QueryWrapperUtil.parseWhereSql(conditionList, new DruidProperties())));
     }
 
     @PostMapping
