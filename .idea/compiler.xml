@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="clouds3n-blog-java" target="11" />
+      <module name="clouds3n-blog-java" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

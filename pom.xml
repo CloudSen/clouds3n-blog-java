@@ -16,7 +16,7 @@
 
   <properties>
     <encoding>UTF-8</encoding>
-    <java.version>11</java.version>
+    <java.version>8</java.version>
     <mybatis.plus.version>3.3.0</mybatis.plus.version>
     <dynamic.datasource.version>2.5.4</dynamic.datasource.version>
     <commons.collections.version>4.4</commons.collections.version>
