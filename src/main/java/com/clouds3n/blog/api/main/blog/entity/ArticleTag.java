@@ -1,4 +1,4 @@
-package com.clouds3n.blog.api.main.entity;
+package com.clouds3n.blog.api.main.blog.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

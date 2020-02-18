@@ -1,7 +1,7 @@
-package com.clouds3n.blog.api.main.mapper;
+package com.clouds3n.blog.api.main.blog.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.clouds3n.blog.api.main.entity.ArticleTag;
+import com.clouds3n.blog.api.main.blog.entity.ArticleTag;
 
 /**
  * <p>

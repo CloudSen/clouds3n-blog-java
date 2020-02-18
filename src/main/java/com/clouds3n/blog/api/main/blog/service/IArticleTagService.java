@@ -1,7 +1,7 @@
-package com.clouds3n.blog.api.main.service;
+package com.clouds3n.blog.api.main.blog.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.clouds3n.blog.api.main.entity.ArticleTag;
+import com.clouds3n.blog.api.main.blog.entity.ArticleTag;
 
 /**
  * <p>

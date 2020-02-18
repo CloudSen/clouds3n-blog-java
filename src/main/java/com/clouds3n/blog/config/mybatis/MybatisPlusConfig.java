@@ -16,7 +16,7 @@ import javax.sql.DataSource;
  * @date 2020-01-12 1:52
  */
 @Configuration
-@MapperScan("com.clouds3n.blog.*.*.mapper")
+@MapperScan({"com.clouds3n.blog.*.*.mapper", "com.clouds3n.blog.*.*.*.mapper"})
 public class MybatisPlusConfig {
 
     @Bean

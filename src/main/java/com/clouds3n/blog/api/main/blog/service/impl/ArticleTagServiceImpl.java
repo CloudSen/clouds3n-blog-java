@@ -1,9 +1,9 @@
-package com.clouds3n.blog.api.main.service.impl;
+package com.clouds3n.blog.api.main.blog.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.clouds3n.blog.api.main.entity.ArticleTag;
-import com.clouds3n.blog.api.main.mapper.ArticleTagMapper;
-import com.clouds3n.blog.api.main.service.IArticleTagService;
+import com.clouds3n.blog.api.main.blog.entity.ArticleTag;
+import com.clouds3n.blog.api.main.blog.mapper.ArticleTagMapper;
+import com.clouds3n.blog.api.main.blog.service.IArticleTagService;
 import org.springframework.stereotype.Service;
 
 /**

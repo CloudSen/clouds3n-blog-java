@@ -1,8 +1,8 @@
-package com.clouds3n.blog.api.main.controller;
+package com.clouds3n.blog.api.main.blog.controller;
 
 
-import com.clouds3n.blog.api.main.entity.ArticleTag;
-import com.clouds3n.blog.api.main.service.IArticleTagService;
+import com.clouds3n.blog.api.main.blog.entity.ArticleTag;
+import com.clouds3n.blog.api.main.blog.service.IArticleTagService;
 import com.clouds3n.blog.common.Res;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
