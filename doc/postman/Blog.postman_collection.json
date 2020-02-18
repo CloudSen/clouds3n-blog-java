@@ -10,7 +10,804 @@
       "item": [
         {
           "name": "header",
-          "item": [],
+          "item": [
+            {
+              "name": "励志短语",
+              "item": [
+                {
+                  "name": "listAll",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{address}}/header/encouragement",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "header",
+                        "encouragement"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "查询成功",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{address}}/header/encouragement",
+                          "host": [
+                            "{{address}}"
+                          ],
+                          "path": [
+                            "header",
+                            "encouragement"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "key": "Transfer-Encoding",
+                          "value": "chunked"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 18 Feb 2020 07:20:48 GMT"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=60"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"2f7e181b5e21417394b5463b1774b126\",\n            \"content\": \"不积跬步，无以至千里；不积小流，无以成江海。\",\n            \"createTime\": \"2020-01-12T00:47:26\",\n            \"updateTime\": \"2020-01-12T00:47:26\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"3ee6269da2a34fba9194787940c9b3c0\",\n            \"content\": \"蜉，水虫也，朝生暮死。\",\n            \"createTime\": \"2020-01-12T00:43:47\",\n            \"updateTime\": \"2020-01-12T00:43:47\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"527aefba0b32495e99515f5069547a38\",\n            \"content\": \"一日无二晨，时过不再临。\",\n            \"createTime\": \"2020-01-12T00:48:05\",\n            \"updateTime\": \"2020-01-12T00:48:05\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"756f96450cf54ce7839530a4986df93e\",\n            \"content\": \"夫学须静也，才须学也，非学无以广才，非志无以成学。\",\n            \"createTime\": \"2020-01-12T00:44:09\",\n            \"updateTime\": \"2020-01-12T00:44:09\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"e604c74ed8fd414b8a38fb618088551a\",\n            \"content\": \"别人都在以你不知道的方式进步，你的进步只是别人的常态。\",\n            \"createTime\": \"2020-01-12T00:43:25\",\n            \"updateTime\": \"2020-01-12T00:43:25\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"f5b30800c4cd476eb7ff08bdcbc2dc0b\",\n            \"content\": \"Go Pro, Or Go Home.\",\n            \"createTime\": \"2020-01-12T00:42:32\",\n            \"updateTime\": \"2020-01-12T00:42:48\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"f8741ae954fc4e48acc4a151347b2e51\",\n            \"content\": \"青，取之于蓝，而青于蓝；冰，水为之，而寒于水。\",\n            \"createTime\": \"2020-01-12T00:49:38\",\n            \"updateTime\": \"2020-01-12T00:49:38\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"f9cd2a7b26304a20a9ee265fa1d5e975\",\n            \"content\": \"Prices will rise, politicians will philander, you, too, will get old.\",\n            \"createTime\": \"2020-01-12T00:48:41\",\n            \"updateTime\": \"2020-01-12T00:48:41\",\n            \"deleted\": false\n        }\n    ]\n}"
+                    }
+                  ]
+                }
+              ],
+              "protocolProfileBehavior": {},
+              "_postman_isSubFolder": true
+            }
+          ],
+          "protocolProfileBehavior": {},
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "aside",
+          "item": [
+            {
+              "name": "侧边菜单",
+              "item": [
+                {
+                  "name": "saveOrUpdate",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"parentId\": \"-1\",\n    \"type\": 0,\n    \"name\": \"其他\",\n    \"itemOrder\": 3\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/aside/drawer-menu",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "aside",
+                        "drawer-menu"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "新增成功",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n    \"parentId\": \"-1\",\r\n    \"type\": 0,\r\n    \"name\": \"主要模块\",\r\n    \"itemOrder\": 1\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{address}}/aside/drawer-menu",
+                          "host": [
+                            "{{address}}"
+                          ],
+                          "path": [
+                            "aside",
+                            "drawer-menu"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "key": "Transfer-Encoding",
+                          "value": "chunked"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 18 Feb 2020 08:09:48 GMT"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=60"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": \"45b487674f91f8fe9fb3d18e3bb674ce\"\n}"
+                    },
+                    {
+                      "name": "更新成功",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n\t\"uuid\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\r\n    \"parentId\": \"-1\",\r\n    \"type\": 0,\r\n    \"name\": \"主要模块1\",\r\n    \"itemOrder\": 1\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{address}}/aside/drawer-menu",
+                          "host": [
+                            "{{address}}"
+                          ],
+                          "path": [
+                            "aside",
+                            "drawer-menu"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "key": "Transfer-Encoding",
+                          "value": "chunked"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 18 Feb 2020 08:13:08 GMT"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=60"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": \"45b487674f91f8fe9fb3d18e3bb674ce\"\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "batchSaveOrUpdate",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n    {\n        \"parentId\": \"f35f43dafdfd9bf7601722522167fa8f\",\n        \"type\": 2,\n        \"name\": \"RSS订阅\",\n        \"routerPath\": \"/home/rss\",\n        \"icon\": \"rss_feed\",\n        \"itemOrder\": 10\n    }\n]",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{address}}/aside/drawer-menu/batch-save-update",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "aside",
+                        "drawer-menu",
+                        "batch-save-update"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "批量保存成功",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n    {\n        \"parentId\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\n        \"type\": 2,\n        \"name\": \"格言\",\n        \"routerPath\": \"/home/motto\",\n        \"icon\": \"home\",\n        \"itemOrder\": 1\n    },\n    {\n        \"parentId\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\n        \"type\": 2,\n        \"name\": \"个人博客\",\n        \"routerPath\": \"/home/blog/\",\n        \"icon\": \"book\",\n        \"itemOrder\": 2\n    },\n    {\n        \"parentId\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\n        \"type\": 2,\n        \"name\": \"专题\",\n        \"routerPath\": \"/home/topic\",\n        \"icon\": \"wb_incandescent\",\n        \"itemOrder\": 3\n    },\n    {\n        \"parentId\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\n        \"type\": 1,\n        \"name\": \"我的项目\",\n        \"routerPath\": \"/home/my-project\",\n        \"icon\": \"work\",\n        \"itemOrder\": 4\n    },\n    {\n        \"parentId\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\n        \"type\": 2,\n        \"name\": \"关于\",\n        \"routerPath\": \"/home/about\",\n        \"icon\": \"info\",\n        \"itemOrder\": 5\n    },\n    {\n        \"parentId\": \"f825c5eaade880d57b229465bf35f030\",\n        \"type\": 2,\n        \"name\": \"时间轴\",\n        \"routerPath\": \"/home/time-line\",\n        \"icon\": \"timeline\",\n        \"itemOrder\": 1\n    },\n    {\n        \"parentId\": \"f825c5eaade880d57b229465bf35f030\",\n        \"type\": 2,\n        \"name\": \"Dashboard\",\n        \"routerPath\": \"/home/dashboard\",\n        \"icon\": \"dashboard\",\n        \"itemOrder\": 2\n    },\n    {\n        \"parentId\": \"f35f43dafdfd9bf7601722522167fa8f\",\n        \"type\": 2,\n        \"name\": \"梦想清单\",\n        \"routerPath\": \"/home/dreamer\",\n        \"icon\": \"check_box\",\n        \"itemOrder\": 6\n    },\n    {\n        \"parentId\": \"f35f43dafdfd9bf7601722522167fa8f\",\n        \"type\": 2,\n        \"name\": \"生命倒计时\",\n        \"routerPath\": \"/home/deadline\",\n        \"icon\": \"av_timer\",\n        \"itemOrder\": 7\n    }\n]",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{address}}/aside/drawer-menu/batch-save-update",
+                          "host": [
+                            "{{address}}"
+                          ],
+                          "path": [
+                            "aside",
+                            "drawer-menu",
+                            "batch-save-update"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "key": "Transfer-Encoding",
+                          "value": "chunked"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 18 Feb 2020 08:23:40 GMT"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=60"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        \"0ba1ded7ac58e807c2bc5c0eec04f50e\",\n        \"89d9a0b2f75608cb813de227b7ceafcb\",\n        \"10d04b787fd3d65207003a7e9e84a8aa\",\n        \"52da2e56c56373068f48c585a4592685\",\n        \"faa6190dee445f6db1cdcf227d4cb49a\",\n        \"2c40551d3d699cdf2c830d057f2885e6\",\n        \"888e7baecaa072dc6d4bbde1bc813e17\",\n        \"f633ee85be1500fa1c6c09282c016e2a\",\n        \"1f8c19eb89bc4f61ea3b071a1f266db5\"\n    ]\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "listAll",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{address}}/aside/drawer-menu",
+                      "host": [
+                        "{{address}}"
+                      ],
+                      "path": [
+                        "aside",
+                        "drawer-menu"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "查询成功",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{address}}/aside/drawer-menu",
+                          "host": [
+                            "{{address}}"
+                          ],
+                          "path": [
+                            "aside",
+                            "drawer-menu"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "key": "Transfer-Encoding",
+                          "value": "chunked"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 18 Feb 2020 08:28:06 GMT"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=60"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"0ba1ded7ac58e807c2bc5c0eec04f50e\",\n            \"parentId\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\n            \"type\": 2,\n            \"name\": \"格言\",\n            \"routerPath\": \"/home/motto\",\n            \"icon\": \"home\",\n            \"itemOrder\": 1,\n            \"createTime\": \"2020-02-18T16:23:40\",\n            \"updateTime\": \"2020-02-18T16:23:40\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"10d04b787fd3d65207003a7e9e84a8aa\",\n            \"parentId\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\n            \"type\": 2,\n            \"name\": \"专题\",\n            \"routerPath\": \"/home/topic\",\n            \"icon\": \"wb_incandescent\",\n            \"itemOrder\": 3,\n            \"createTime\": \"2020-02-18T16:23:40\",\n            \"updateTime\": \"2020-02-18T16:23:40\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"1f8c19eb89bc4f61ea3b071a1f266db5\",\n            \"parentId\": \"f35f43dafdfd9bf7601722522167fa8f\",\n            \"type\": 2,\n            \"name\": \"生命倒计时\",\n            \"routerPath\": \"/home/deadline\",\n            \"icon\": \"av_timer\",\n            \"itemOrder\": 7,\n            \"createTime\": \"2020-02-18T16:23:40\",\n            \"updateTime\": \"2020-02-18T16:23:40\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"2c40551d3d699cdf2c830d057f2885e6\",\n            \"parentId\": \"f825c5eaade880d57b229465bf35f030\",\n            \"type\": 2,\n            \"name\": \"时间轴\",\n            \"routerPath\": \"/home/time-line\",\n            \"icon\": \"timeline\",\n            \"itemOrder\": 1,\n            \"createTime\": \"2020-02-18T16:23:40\",\n            \"updateTime\": \"2020-02-18T16:23:40\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\n            \"parentId\": \"-1\",\n            \"type\": 0,\n            \"name\": \"主要模块\",\n            \"routerPath\": null,\n            \"icon\": null,\n            \"itemOrder\": 1,\n            \"createTime\": \"2020-02-18T16:09:48\",\n            \"updateTime\": \"2020-02-18T16:26:09\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"52da2e56c56373068f48c585a4592685\",\n            \"parentId\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\n            \"type\": 1,\n            \"name\": \"我的项目\",\n            \"routerPath\": \"/home/my-project\",\n            \"icon\": \"work\",\n            \"itemOrder\": 4,\n            \"createTime\": \"2020-02-18T16:23:40\",\n            \"updateTime\": \"2020-02-18T16:23:40\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"820e3855f3243cfc3cf8033a4381fa03\",\n            \"parentId\": \"52da2e56c56373068f48c585a4592685\",\n            \"type\": 2,\n            \"name\": \"Web终端\",\n            \"routerPath\": \"/home/welcome\",\n            \"icon\": \"computer\",\n            \"itemOrder\": 8,\n            \"createTime\": \"2020-02-18T16:26:14\",\n            \"updateTime\": \"2020-02-18T16:26:14\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"888e7baecaa072dc6d4bbde1bc813e17\",\n            \"parentId\": \"f825c5eaade880d57b229465bf35f030\",\n            \"type\": 2,\n            \"name\": \"Dashboard\",\n            \"routerPath\": \"/home/dashboard\",\n            \"icon\": \"dashboard\",\n            \"itemOrder\": 2,\n            \"createTime\": \"2020-02-18T16:23:40\",\n            \"updateTime\": \"2020-02-18T16:23:40\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"89d9a0b2f75608cb813de227b7ceafcb\",\n            \"parentId\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\n            \"type\": 2,\n            \"name\": \"个人博客\",\n            \"routerPath\": \"/home/blog/\",\n            \"icon\": \"book\",\n            \"itemOrder\": 2,\n            \"createTime\": \"2020-02-18T16:23:40\",\n            \"updateTime\": \"2020-02-18T16:23:40\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"8d73e382b9abd1081eb6b1615efe1974\",\n            \"parentId\": \"f35f43dafdfd9bf7601722522167fa8f\",\n            \"type\": 2,\n            \"name\": \"友情链接\",\n            \"routerPath\": \"/home/friends\",\n            \"icon\": \"people\",\n            \"itemOrder\": 9,\n            \"createTime\": \"2020-02-18T16:27:20\",\n            \"updateTime\": \"2020-02-18T16:27:20\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"d4b35802ae29d2146ffebb7c21aacff1\",\n            \"parentId\": \"f35f43dafdfd9bf7601722522167fa8f\",\n            \"type\": 2,\n            \"name\": \"RSS订阅\",\n            \"routerPath\": \"/home/rss\",\n            \"icon\": \"rss_feed\",\n            \"itemOrder\": 10,\n            \"createTime\": \"2020-02-18T16:27:36\",\n            \"updateTime\": \"2020-02-18T16:27:36\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"f35f43dafdfd9bf7601722522167fa8f\",\n            \"parentId\": \"-1\",\n            \"type\": 0,\n            \"name\": \"其他\",\n            \"routerPath\": null,\n            \"icon\": null,\n            \"itemOrder\": 3,\n            \"createTime\": \"2020-02-18T16:19:15\",\n            \"updateTime\": \"2020-02-18T16:19:15\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"f633ee85be1500fa1c6c09282c016e2a\",\n            \"parentId\": \"f35f43dafdfd9bf7601722522167fa8f\",\n            \"type\": 2,\n            \"name\": \"梦想清单\",\n            \"routerPath\": \"/home/dreamer\",\n            \"icon\": \"check_box\",\n            \"itemOrder\": 6,\n            \"createTime\": \"2020-02-18T16:23:40\",\n            \"updateTime\": \"2020-02-18T16:23:40\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"f825c5eaade880d57b229465bf35f030\",\n            \"parentId\": \"-1\",\n            \"type\": 0,\n            \"name\": \"系统相关\",\n            \"routerPath\": null,\n            \"icon\": null,\n            \"itemOrder\": 2,\n            \"createTime\": \"2020-02-18T16:18:21\",\n            \"updateTime\": \"2020-02-18T16:18:21\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"faa6190dee445f6db1cdcf227d4cb49a\",\n            \"parentId\": \"45b487674f91f8fe9fb3d18e3bb674ce\",\n            \"type\": 2,\n            \"name\": \"关于\",\n            \"routerPath\": \"/home/about\",\n            \"icon\": \"info\",\n            \"itemOrder\": 5,\n            \"createTime\": \"2020-02-18T16:23:40\",\n            \"updateTime\": \"2020-02-18T16:23:40\",\n            \"deleted\": false\n        }\n    ]\n}"
+                    }
+                  ]
+                }
+              ],
+              "protocolProfileBehavior": {},
+              "_postman_isSubFolder": true
+            }
+          ],
+          "protocolProfileBehavior": {},
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "main",
+          "item": [
+            {
+              "name": "博客",
+              "item": [
+                {
+                  "name": "标签",
+                  "item": [
+                    {
+                      "name": "listAll",
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{address}}/main/article-tag",
+                          "host": [
+                            "{{address}}"
+                          ],
+                          "path": [
+                            "main",
+                            "article-tag"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "查询成功",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{address}}/main/article-tag",
+                              "host": [
+                                "{{address}}"
+                              ],
+                              "path": [
+                                "main",
+                                "article-tag"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "key": "Transfer-Encoding",
+                              "value": "chunked"
+                            },
+                            {
+                              "key": "Date",
+                              "value": "Tue, 18 Feb 2020 08:42:09 GMT"
+                            },
+                            {
+                              "key": "Keep-Alive",
+                              "value": "timeout=60"
+                            },
+                            {
+                              "key": "Connection",
+                              "value": "keep-alive"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        {\n            \"uuid\": \"0829a44f51a050c70215377869c36693\",\n            \"name\": \"Vuetify\",\n            \"color\": \"indigo lighten-1\",\n            \"createTime\": \"2020-02-18T16:37:16\",\n            \"updateTime\": \"2020-02-18T16:37:16\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"1c304272e2c81f1c364d7ae7176dc732\",\n            \"name\": \"Vue\",\n            \"color\": \"lime darken-1\",\n            \"createTime\": \"2020-02-18T16:37:37\",\n            \"updateTime\": \"2020-02-18T16:38:02\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"4aeedf7e16c4c4a93f6c3ef6af9e2894\",\n            \"name\": \"JS\",\n            \"color\": \"amber lighten-2\",\n            \"createTime\": \"2020-02-18T16:40:34\",\n            \"updateTime\": \"2020-02-18T16:40:34\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"704f6eb63770b8025d0abadce300ae2b\",\n            \"name\": \"ElasticSearch\",\n            \"color\": \"amber darken-2\",\n            \"createTime\": \"2020-02-18T16:38:27\",\n            \"updateTime\": \"2020-02-18T16:38:27\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"93bc1317fb6f7aa364c9872f378e28cd\",\n            \"name\": \"GoLang\",\n            \"color\": \"green darken-2\",\n            \"createTime\": \"2020-02-18T16:40:34\",\n            \"updateTime\": \"2020-02-18T16:40:34\",\n            \"deleted\": false\n        },\n        {\n            \"uuid\": \"e4bed13cd9e3701a8acb1895f886c0c2\",\n            \"name\": \"Java\",\n            \"color\": \"blue lighten-1\",\n            \"createTime\": \"2020-02-18T16:40:34\",\n            \"updateTime\": \"2020-02-18T16:40:34\",\n            \"deleted\": false\n        }\n    ]\n}"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "saveOrUpdate",
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n\t\"name\": \"ElasticSearch\",\n\t\"color\": \"amber darken-2\"\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{address}}/main/article-tag",
+                          "host": [
+                            "{{address}}"
+                          ],
+                          "path": [
+                            "main",
+                            "article-tag"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "新增成功",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n\t\"name\": \"ElasticSearch\",\n\t\"color\": \"amber darken-2\"\n}",
+                              "options": {
+                                "raw": {
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{address}}/main/article-tag",
+                              "host": [
+                                "{{address}}"
+                              ],
+                              "path": [
+                                "main",
+                                "article-tag"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "key": "Transfer-Encoding",
+                              "value": "chunked"
+                            },
+                            {
+                              "key": "Date",
+                              "value": "Tue, 18 Feb 2020 08:38:27 GMT"
+                            },
+                            {
+                              "key": "Keep-Alive",
+                              "value": "timeout=60"
+                            },
+                            {
+                              "key": "Connection",
+                              "value": "keep-alive"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": \"704f6eb63770b8025d0abadce300ae2b\"\n}"
+                        },
+                        {
+                          "name": "更新成功",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n\t\"uuid\": \"1c304272e2c81f1c364d7ae7176dc732\",\n\t\"name\": \"Vue\",\n\t\"color\": \"lime darken-1\"\n}",
+                              "options": {
+                                "raw": {
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{address}}/main/article-tag",
+                              "host": [
+                                "{{address}}"
+                              ],
+                              "path": [
+                                "main",
+                                "article-tag"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "key": "Transfer-Encoding",
+                              "value": "chunked"
+                            },
+                            {
+                              "key": "Date",
+                              "value": "Tue, 18 Feb 2020 08:38:02 GMT"
+                            },
+                            {
+                              "key": "Keep-Alive",
+                              "value": "timeout=60"
+                            },
+                            {
+                              "key": "Connection",
+                              "value": "keep-alive"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": \"1c304272e2c81f1c364d7ae7176dc732\"\n}"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "batchSaveOrUpdate",
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "name": "Content-Type",
+                            "value": "application/json",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n    {\n    \t\"uuid\": \"4aeedf7e16c4c4a93f6c3ef6af9e2894\",\n        \"name\": \"JS\",\n        \"color\": \"amber lighten-2\"\n    }\n]",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{address}}/main/article-tag/batch-save-update",
+                          "host": [
+                            "{{address}}"
+                          ],
+                          "path": [
+                            "main",
+                            "article-tag",
+                            "batch-save-update"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "更新成功",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n    {\n    \t\"uuid\": \"4aeedf7e16c4c4a93f6c3ef6af9e2894\",\n        \"name\": \"JS\",\n        \"color\": \"amber lighten-2\"\n    }\n]",
+                              "options": {
+                                "raw": {
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{address}}/main/article-tag/batch-save-update",
+                              "host": [
+                                "{{address}}"
+                              ],
+                              "path": [
+                                "main",
+                                "article-tag",
+                                "batch-save-update"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "key": "Transfer-Encoding",
+                              "value": "chunked"
+                            },
+                            {
+                              "key": "Date",
+                              "value": "Tue, 18 Feb 2020 08:41:19 GMT"
+                            },
+                            {
+                              "key": "Keep-Alive",
+                              "value": "timeout=60"
+                            },
+                            {
+                              "key": "Connection",
+                              "value": "keep-alive"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        \"4aeedf7e16c4c4a93f6c3ef6af9e2894\"\n    ]\n}"
+                        },
+                        {
+                          "name": "新增成功",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "name": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n    {\n        \"name\": \"JS\",\n        \"color\": \"amber lighten-2\"\n    },\n    {\n        \"name\": \"Java\",\n        \"color\": \"blue lighten-1\"\n    },\n    {\n        \"name\": \"GoLang\",\n        \"color\": \"green darken-2\"\n    }\n]",
+                              "options": {
+                                "raw": {
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{address}}/main/article-tag/batch-save-update",
+                              "host": [
+                                "{{address}}"
+                              ],
+                              "path": [
+                                "main",
+                                "article-tag",
+                                "batch-save-update"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "key": "Transfer-Encoding",
+                              "value": "chunked"
+                            },
+                            {
+                              "key": "Date",
+                              "value": "Tue, 18 Feb 2020 08:40:34 GMT"
+                            },
+                            {
+                              "key": "Keep-Alive",
+                              "value": "timeout=60"
+                            },
+                            {
+                              "key": "Connection",
+                              "value": "keep-alive"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"请求成功\",\n    \"data\": [\n        \"4aeedf7e16c4c4a93f6c3ef6af9e2894\",\n        \"e4bed13cd9e3701a8acb1895f886c0c2\",\n        \"93bc1317fb6f7aa364c9872f378e28cd\"\n    ]\n}"
+                        }
+                      ]
+                    }
+                  ],
+                  "protocolProfileBehavior": {},
+                  "_postman_isSubFolder": true
+                }
+              ],
+              "protocolProfileBehavior": {},
+              "_postman_isSubFolder": true
+            }
+          ],
           "protocolProfileBehavior": {},
           "_postman_isSubFolder": true
         }
