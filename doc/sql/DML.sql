@@ -43,3 +43,10 @@ VALUES ('29b4431977314b1a891d94970b772f8d', '我的项目', '/home/my-project', 
 
 INSERT INTO `blog`.`header_menu` (`uuid`, `name`, `router_path`, `item_order`, `create_time`, `update_time`)
 VALUES ('c2c0f7686ecc4174a3241861a74266a9', '关于', '/home/about', '5', '2020-04-18 22:34:58', '2020-04-18 22:34:58');
+
+# about me
+INSERT INTO `blog`.`about_me` (`uuid`, `introduce`, `code`, `contact`)
+VALUES ('25200015110f43e4815ff987b6f657f0',
+        '# 关于\r\n「无丝竹之乱耳，无案牍之劳形。」  \r\n欢迎来到我的小站。这是一个安静的地方。  \r\n凡夫俗子，喜爱折腾，努力去追求自己热爱的事物。  \r\n在这儿，我会整理自己学到的知识，还有发布一些有趣的所见所闻所思。噢，当然，有空可以拉我一起打game。  ',
+        '```java\r\nYou you = new You("有趣的灵魂200多斤");\r\nMe me = new Me("好看的皮囊千篇一律");\r\n\r\nif (you.share(me)) {\r\n    we.learn(eachOther);\r\n}\r\n\r\nif (you.love(me)) {\r\n    while (nobodyIsWatching) {\r\n        me.hug(you);\r\n        you.kiss(me);\r\n    }\r\n}\r\n\r\n// just a joke :P\r\nif (you.become(ROLE.PROGRAMMER)) {\r\n    return "forever alone";\r\n}\r\n```  ',
+        '- gmail: \\`echo d3d3LjQwMjY0NTA2M0BnbWFpbC5jb20= | base64 -d\\`\r\n- Telegram: **[cloudsen](https://t.me/CloudSen)**');
