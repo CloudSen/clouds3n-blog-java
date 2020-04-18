@@ -29,6 +29,8 @@ public class MybatisPlusCodeGenerator {
     private static final String USER_PWD = "cloudsen";
     private static final String OUTPUT_PATH = "/src/main/java/";
     private static final String SQL_XML_LOCATION = "/src/main/resources/mapper/";
+    private static final String AUTHOR = "CloudS3n";
+    private static final String PARENT_PACKAGE_NAME = "com.clouds3n.blog.api";
 
     /**
      * <p>
@@ -55,7 +57,7 @@ public class MybatisPlusCodeGenerator {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir(projectPath + OUTPUT_PATH);
-        gc.setAuthor("CloudS3n");
+        gc.setAuthor(AUTHOR);
         gc.setOpen(false);
         // 设置主键是32位的UUID
         gc.setIdType(IdType.ASSIGN_UUID);
@@ -72,7 +74,7 @@ public class MybatisPlusCodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(scanner("模块名"));
-        pc.setParent(scanner("父包名"));
+        pc.setParent(PARENT_PACKAGE_NAME);
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -112,6 +114,7 @@ public class MybatisPlusCodeGenerator {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
+        strategy.setEntityBooleanColumnRemoveIsPrefix(true);
         // 生成实体类时，去调T开头的表前缀
         strategy.setTablePrefix("t_");
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
