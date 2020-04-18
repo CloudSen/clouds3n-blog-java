@@ -13,4 +13,10 @@ import com.clouds3n.blog.api.header.entity.Encouragement;
  */
 public interface IEncouragementService extends IService<Encouragement> {
 
+    /**
+     * 随机获取一个励志短语
+     *
+     * @return 励志短语
+     */
+    Encouragement randomGetOne();
 }

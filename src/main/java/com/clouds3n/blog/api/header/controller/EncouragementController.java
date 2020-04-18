@@ -26,6 +26,11 @@ public class EncouragementController {
     }
 
     @GetMapping
+    public Res randomGetOne() {
+        return Res.ok(encouragementService.randomGetOne());
+    }
+
+    @GetMapping("/all")
     public Res listAll() {
         return Res.ok(encouragementService.list());
     }
