@@ -124,3 +124,20 @@ CREATE TABLE `article`
     ENGINE = InnoDB
 ;
 
+CREATE TABLE `header_menu`
+(
+    `uuid`        VARCHAR(32) NOT NULL COMMENT 'uuid主键',
+    `name`        VARCHAR(32) NOT NULL COMMENT '菜单名',
+    `router_path` VARCHAR(50) NOT NULL DEFAULT '/' COMMENT 'vue路由',
+    `icon`        VARCHAR(50) NOT NULL DEFAULT 'info' COMMENT '图标名',
+    `item_order`  SMALLINT(6) NOT NULL DEFAULT 0 COMMENT '图标优先级，越大越靠前',
+    `create_time` DATETIME    NOT NULL DEFAULT current_timestamp() COMMENT '创建时间',
+    `update_time` DATETIME    NOT NULL DEFAULT current_timestamp() ON UPDATE CURRENT_TIMESTAMP() COMMENT '更新时间',
+    `delete`      TINYINT(1)  NOT NULL DEFAULT 0 COMMENT '是否弃用：1弃用 0未弃用',
+    PRIMARY KEY (`uuid`)
+)
+    COMMENT ='header简单菜单'
+    COLLATE = 'utf8_general_ci'
+    ENGINE = InnoDB
+;
+
