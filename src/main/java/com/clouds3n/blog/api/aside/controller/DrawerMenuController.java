@@ -8,7 +8,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * <p>
@@ -44,9 +43,4 @@ public class DrawerMenuController {
         drawerMenuService.saveOrUpdateBatch(drawerMenus);
         return Res.ok(drawerMenus.stream().map(DrawerMenu::getUuid).toArray());
     }
-
-    public static void main(String[] args) {
-        System.out.println(UUID.randomUUID().toString().replaceAll("-", ""));
-    }
-
 }

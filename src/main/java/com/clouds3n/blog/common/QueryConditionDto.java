@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 /**
  * @author CloudS3n
@@ -12,7 +13,8 @@ import javax.validation.constraints.NotBlank;
  */
 @Data
 @Accessors(chain = true)
-public class QueryConditionDto {
+public class QueryConditionDto implements Serializable {
+    private static final long serialVersionUID = 3698470111521761955L;
     /**
      * 数据库字段名
      */

@@ -31,4 +31,8 @@ public final class UUIDUtil {
         return uuid().replaceAll(SysCode.SHORT_DASH, StringUtils.EMPTY);
     }
 
+    public static void main(String[] args) {
+        System.out.println(uuid32());
+    }
+
 }
