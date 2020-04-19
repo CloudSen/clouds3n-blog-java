@@ -2,13 +2,11 @@ package com.clouds3n.blog.api.main.blog.controller;
 
 
 import com.clouds3n.blog.api.main.blog.dto.ArticleSummaryDto;
+import com.clouds3n.blog.api.main.blog.service.IArticleService;
 import com.clouds3n.blog.api.main.blog.service.IArticleTagBindService;
 import com.clouds3n.blog.common.PaginationDto;
 import com.clouds3n.blog.common.Res;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -23,13 +21,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class ArticleController {
 
     private final IArticleTagBindService articleTagBindService;
+    private final IArticleService articleService;
 
-    public ArticleController(IArticleTagBindService articleTagBindService) {
+    public ArticleController(IArticleTagBindService articleTagBindService, IArticleService articleService) {
         this.articleTagBindService = articleTagBindService;
+        this.articleService = articleService;
     }
 
     @PostMapping("/querySummary")
     public Res queryPagedArticleSummary(@RequestBody PaginationDto<ArticleSummaryDto> condition) throws IllegalAccessException {
         return Res.ok(articleTagBindService.queryPagedArticleSummary(condition));
+    }
+
+    @GetMapping("/{uuid}")
+    public Res getArticleDetailByI(@PathVariable("uuid") String uuid) {
+        return Res.ok(articleService.getById(uuid));
     }
 }

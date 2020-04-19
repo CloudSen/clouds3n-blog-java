@@ -28,7 +28,7 @@ public class MybatisPlusCodeGenerator {
     private static final String USER_NAME = "root";
     private static final String USER_PWD = "cloudsen";
     private static final String OUTPUT_PATH = "/src/main/java/";
-    private static final String SQL_XML_LOCATION = "/src/main/resources/mapper/";
+    private static final String SQL_XML_LOCATION = "/src/main/resources/mapper/main/";
     private static final String AUTHOR = "CloudS3n";
     private static final String PARENT_PACKAGE_NAME = "com.clouds3n.blog.api";
 
