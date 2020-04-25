@@ -44,3 +44,38 @@ logging:
   level:
     com.baomidou: debug
     org.springframework.jdbc.datasource.init: debug
+---
+spring:
+  profiles: prod
+  data:
+    redis:
+      repositories:
+        enabled: false
+  datasource:
+    dynamic:
+      primary: blog
+      strict: true
+      p6spy: true
+      druid:
+        filters: stat
+        initial-size: 50
+        min-idle: 15
+        max-wait: 6000
+        max-active: 300
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        poolPreparedStatements: true
+        max-pool-prepared-statement-per-connection-size: 100
+        validation-query: "select 1"
+        validation-query-timeout: 6000
+      datasource:
+        blog:
+          username: root
+          password: cloudsen
+          url: "jdbc:mariadb://localhost:3306/blog?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC"
+          driver-class-name: "org.mariadb.jdbc.Driver"
+logging:
+  level:
+    com.baomidou: debug
+    org.springframework.jdbc.datasource.init: debug
