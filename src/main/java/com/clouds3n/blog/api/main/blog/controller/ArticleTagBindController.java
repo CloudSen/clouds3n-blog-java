@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-04-19
  */
 @RestController
-@RequestMapping("/blog/article-tag-bind")
+@RequestMapping("/main/blog/article-tag-bind")
 public class ArticleTagBindController {
 
 }

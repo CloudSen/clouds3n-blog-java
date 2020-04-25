@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-04-19
  */
 @RestController
-@RequestMapping("/aboutme/about-me")
+@RequestMapping("/main/about-me")
 public class AboutMeController {
 
     private final IAboutMeService aboutMeService;

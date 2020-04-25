@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2020-04-19
  */
 @RestController
-@RequestMapping("/blog/article")
+@RequestMapping("/main/blog/article")
 public class ArticleController {
 
     private final IArticleTagBindService articleTagBindService;

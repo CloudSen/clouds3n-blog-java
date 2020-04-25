@@ -18,7 +18,7 @@ import java.util.List;
  * @since 2020-02-18
  */
 @RestController
-@RequestMapping("/blog/article-tag")
+@RequestMapping("/main/blog/article-tag")
 public class ArticleTagController {
 
     private final IArticleTagService tagService;
