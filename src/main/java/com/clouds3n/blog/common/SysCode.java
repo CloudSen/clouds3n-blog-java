@@ -7,6 +7,7 @@ package com.clouds3n.blog.common;
 public final class SysCode {
 
     public static final String SHORT_DASH = "-";
+    public static final String COMMA = ",";
     public static final String OPERATION_SUCCESS = "请求成功";
     public static final String OPERATION_FAILED = "请求失败";
 }
