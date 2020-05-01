@@ -3,6 +3,7 @@ package com.clouds3n.blog.api.main.blog.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.clouds3n.blog.api.main.blog.dto.ArticleSummaryDto;
+import com.clouds3n.blog.api.main.blog.dto.ArticleSummaryPageByTagDto;
 import com.clouds3n.blog.api.main.blog.entity.ArticleTagBind;
 import com.clouds3n.blog.common.PaginationDto;
 
@@ -25,4 +26,12 @@ public interface IArticleTagBindService extends IService<ArticleTagBind> {
      * @throws IllegalAccessException 非法访问
      */
     Page<ArticleSummaryDto> queryPagedArticleSummary(PaginationDto<ArticleSummaryDto> condition) throws IllegalAccessException;
+
+    /**
+     * 通过标签id获取文章摘要列表
+     *
+     * @param condition 分页参数, 标签ID
+     * @return 分页后的文章列表
+     */
+    Page<ArticleSummaryDto> queryPagedArticleSummaryByTag(ArticleSummaryPageByTagDto condition);
 }

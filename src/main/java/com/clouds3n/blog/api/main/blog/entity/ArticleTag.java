@@ -2,6 +2,7 @@ package com.clouds3n.blog.api.main.blog.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.clouds3n.blog.api.main.blog.dto.ArticleTagDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -57,5 +58,7 @@ public class ArticleTag implements Serializable {
      */
     private Boolean deleted;
 
-
+    public ArticleTagDto toArticleTagDto() {
+        return new ArticleTagDto(this);
+    }
 }

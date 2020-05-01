@@ -6,14 +6,20 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.clouds3n.blog.api.main.blog.dto.ArticleSummaryDto;
 import com.clouds3n.blog.api.main.blog.dto.ArticleSummaryPageByTagDto;
+import com.clouds3n.blog.api.main.blog.dto.ArticleTagConn;
+import com.clouds3n.blog.api.main.blog.entity.Article;
+import com.clouds3n.blog.api.main.blog.entity.ArticleTag;
 import com.clouds3n.blog.api.main.blog.entity.ArticleTagBind;
+import com.clouds3n.blog.api.main.blog.mapper.ArticleMapper;
 import com.clouds3n.blog.api.main.blog.mapper.ArticleTagBindMapper;
+import com.clouds3n.blog.api.main.blog.mapper.ArticleTagMapper;
 import com.clouds3n.blog.api.main.blog.service.IArticleTagBindService;
 import com.clouds3n.blog.common.PaginationDto;
 import com.clouds3n.blog.util.QueryWrapperUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,15 +35,51 @@ import java.util.stream.Collectors;
 public class ArticleTagBindServiceImpl extends ServiceImpl<ArticleTagBindMapper, ArticleTagBind> implements IArticleTagBindService {
 
     private final ArticleTagBindMapper articleTagBindMapper;
+    private final ArticleMapper articleMapper;
+    private final ArticleTagMapper articleTagMapper;
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    public ArticleTagBindServiceImpl(ArticleTagBindMapper articleTagBindMapper) {
+    public ArticleTagBindServiceImpl(ArticleTagBindMapper articleTagBindMapper, ArticleMapper articleMapper, ArticleTagMapper articleTagMapper) {
         this.articleTagBindMapper = articleTagBindMapper;
+        this.articleMapper = articleMapper;
+        this.articleTagMapper = articleTagMapper;
     }
 
     @Override
     public Page<ArticleSummaryDto> queryPagedArticleSummary(PaginationDto<ArticleSummaryDto> condition) throws IllegalAccessException {
-        return articleTagBindMapper.queryPagedArticleSummary(condition.getPage(), QueryWrapperUtil.parseWhereSql(condition.getConditionList(), new ArticleSummaryDto()));
+        // 防止N+1问题，JAVA处理子查询
+        // 根据条件查询文章
+        List<ArticleTagConn> articleTagConnList = new ArrayList<>();
+        Page<ArticleSummaryDto> resultPage = condition.getPage();
+        Page<Article> articlePage = new Page<>();
+        articlePage.setCurrent(resultPage.getCurrent()).setSize(resultPage.getSize()).setOrders(resultPage.getOrders());
+        articleMapper.selectPage(articlePage, QueryWrapperUtil.parseWhereSql(condition.getConditionList(), new Article()));
+        List<Article> articleList = articlePage.getRecords();
+        if (CollectionUtils.isEmpty(articleList)) {
+            return resultPage.setTotal(0);
+        }
+        articleList.forEach(article -> articleTagConnList.add(new ArticleTagConn().setArticleSummaryDto(article.toSummaryDto())));
+        // 查询当前页文章相关的标签id，key是articleId
+        List<ArticleTagBind> articleTagBindList = this.list(
+            Wrappers.lambdaQuery(ArticleTagBind.class)
+                .in(ArticleTagBind::getArticleId, articleList.stream().map(Article::getUuid).collect(Collectors.toList()))
+        );
+        articleTagConnList.forEach(articleTagConn -> articleTagConn.saveTagIdList(articleTagBindList.stream().collect(Collectors.groupingBy(ArticleTagBind::getArticleId))));
+        // 查询当前页文章的全部标签
+        final List<ArticleTag> tagList = new ArrayList<>();
+        if (CollectionUtils.isNotEmpty(articleTagBindList)) {
+            tagList.addAll(
+                articleTagMapper.selectList(
+                    Wrappers.lambdaQuery(ArticleTag.class)
+                        .in(ArticleTag::getUuid, articleTagBindList.stream().map(ArticleTagBind::getTagId).collect(Collectors.toList()))
+                )
+            );
+        }
+        // 文章和标签完整信息
+        articleTagConnList.forEach(articleTagConn -> articleTagConn.saveTagDetailList(tagList));
+        resultPage.setRecords(articleTagConnList.stream().map(ArticleSummaryDto::new).collect(Collectors.toList()))
+            .setPages(articlePage.getPages()).setTotal(articlePage.getTotal());
+        return resultPage;
     }
 
     @Override

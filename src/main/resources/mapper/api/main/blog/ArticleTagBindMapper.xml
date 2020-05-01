@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--suppress SqlResolve -->
+<!--suppress SqlResolve, MybatisMapperXmlInspection -->
 <mapper namespace="com.clouds3n.blog.api.main.blog.mapper.ArticleTagBindMapper">
 
   <resultMap id="articleSummaryMap" type="com.clouds3n.blog.api.main.blog.dto.ArticleSummaryDto">
@@ -8,6 +8,7 @@
     <result column="title" property="title"/>
     <result column="summary" property="summary"/>
     <result column="color" property="color"/>
+    <result column="textColor" property="summaryTextColor"/>
     <result column="imgUrlMd" property="imgUrlMd"/>
     <result column="createTime" property="createTime"/>
     <result column="updateTime" property="updateTime"/>
@@ -23,6 +24,7 @@
            a.title       title,
            a.summary     summary,
            a.color       color,
+           a.text_color  textColor,
            a.img_url_md  imgUrlMd,
            a.create_time createTime,
            a.update_time updateTime,

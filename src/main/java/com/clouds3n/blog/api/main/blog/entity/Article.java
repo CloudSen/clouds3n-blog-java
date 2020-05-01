@@ -2,6 +2,7 @@ package com.clouds3n.blog.api.main.blog.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.clouds3n.blog.api.main.blog.dto.ArticleSummaryDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -61,6 +62,11 @@ public class Article implements Serializable {
     private String color;
 
     /**
+     * 文章摘要卡片内容文字样式
+     */
+    private String textColor;
+
+    /**
      * 文章是否过时，0未过时，1已过时
      */
     private Boolean deprecated;
@@ -85,5 +91,8 @@ public class Article implements Serializable {
      */
     private Boolean deleted;
 
+    public ArticleSummaryDto toSummaryDto() {
+        return new ArticleSummaryDto(this);
+    }
 
 }
