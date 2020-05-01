@@ -2,6 +2,7 @@ package com.clouds3n.blog.api.main.blog.controller;
 
 
 import com.clouds3n.blog.api.main.blog.dto.ArticleSummaryDto;
+import com.clouds3n.blog.api.main.blog.dto.ArticleSummaryPageByTagDto;
 import com.clouds3n.blog.api.main.blog.service.IArticleService;
 import com.clouds3n.blog.api.main.blog.service.IArticleTagBindService;
 import com.clouds3n.blog.common.PaginationDto;
@@ -33,8 +34,13 @@ public class ArticleController {
         return Res.ok(articleTagBindService.queryPagedArticleSummary(condition));
     }
 
+    @PostMapping("/querySummaryByTag")
+    public Res queryPagedArticleSummaryByTag(@RequestBody ArticleSummaryPageByTagDto condition) {
+        return Res.ok(articleTagBindService.queryPagedArticleSummaryByTag(condition));
+    }
+
     @GetMapping("/{uuid}")
-    public Res getArticleDetailByI(@PathVariable("uuid") String uuid) {
+    public Res getArticleDetailById(@PathVariable("uuid") String uuid) {
         return Res.ok(articleService.getById(uuid));
     }
 }
