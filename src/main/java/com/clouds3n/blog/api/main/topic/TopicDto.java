@@ -24,6 +24,7 @@ public class TopicDto implements Serializable {
     private String uuid;
     private String parentUuid;
     private String topicName;
+    private String topicNameClass;
     private Integer showOrder;
     private String topicImg;
     private List<TopicDto> childList;
@@ -32,6 +33,7 @@ public class TopicDto implements Serializable {
         this.uuid = topic.getUuid();
         this.parentUuid = topic.getParentUuid();
         this.topicName = topic.getTopicName();
+        this.topicNameClass = topic.getTopicNameClass();
         this.showOrder = topic.getShowOrder();
         this.topicImg = topic.getTopicImg();
         this.childList = new ArrayList<>();

@@ -42,6 +42,11 @@ public class Topic implements Serializable {
     private String topicName;
 
     /**
+     * 专题名文字css
+     */
+    private String topicNameClass;
+
+    /**
      * 显示顺序
      */
     private Integer showOrder;
