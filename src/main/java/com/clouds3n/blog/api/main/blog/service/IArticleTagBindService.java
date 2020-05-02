@@ -4,8 +4,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.clouds3n.blog.api.main.blog.dto.ArticleSummaryDto;
 import com.clouds3n.blog.api.main.blog.dto.ArticleSummaryPageByTagDto;
+import com.clouds3n.blog.api.main.blog.dto.ArticleTagConn;
+import com.clouds3n.blog.api.main.blog.entity.Article;
 import com.clouds3n.blog.api.main.blog.entity.ArticleTagBind;
 import com.clouds3n.blog.common.PaginationDto;
+
+import java.util.List;
 
 /**
  * <p>
@@ -34,4 +38,12 @@ public interface IArticleTagBindService extends IService<ArticleTagBind> {
      * @return 分页后的文章列表
      */
     Page<ArticleSummaryDto> queryPagedArticleSummaryByTag(ArticleSummaryPageByTagDto condition);
+
+    /**
+     * 根据文章列表，构建文章和标签的关系
+     *
+     * @param articleList 文章列表
+     * @return 文章和标签的关系列表
+     */
+    List<ArticleTagConn> buildArticleTagConnList(List<Article> articleList);
 }

@@ -2,7 +2,6 @@ package com.clouds3n.blog.api.main.topic.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.clouds3n.blog.api.main.topic.dto.TopicDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -12,7 +11,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 专题
+ * 专题-文章多对多映射
  * </p>
  *
  * @author CloudS3n
@@ -21,7 +20,7 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class Topic implements Serializable {
+public class TopicArticleBind implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,29 +31,14 @@ public class Topic implements Serializable {
     private String uuid;
 
     /**
-     * 父主题主键，若自己时父类，则为-1
+     * 专题主键
      */
-    private String parentUuid;
+    private String topicUuid;
 
     /**
-     * 专题名
+     * 文章主键
      */
-    private String topicName;
-
-    /**
-     * 专题名文字css
-     */
-    private String topicNameClass;
-
-    /**
-     * 显示顺序
-     */
-    private Integer showOrder;
-
-    /**
-     * 主题图片url
-     */
-    private String topicImg;
+    private String articleUuid;
 
     /**
      * 创建时间
@@ -67,11 +51,9 @@ public class Topic implements Serializable {
     private LocalDateTime updateTime;
 
     /**
-     * 是否删除【0：未删除，1：已删除】
+     * 是否删除【0：未删除，1：；已删除】
      */
     private Boolean deleted;
 
-    public TopicDto toTopicDto() {
-        return new TopicDto(this);
-    }
+
 }

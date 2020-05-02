@@ -3,7 +3,7 @@ package com.clouds3n.blog.api.main.topic.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.clouds3n.blog.api.main.topic.TopicDto;
+import com.clouds3n.blog.api.main.topic.dto.TopicDto;
 import com.clouds3n.blog.api.main.topic.entity.Topic;
 import com.clouds3n.blog.api.main.topic.mapper.TopicMapper;
 import com.clouds3n.blog.api.main.topic.service.ITopicService;

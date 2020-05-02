@@ -1,4 +1,4 @@
-package com.clouds3n.blog.api.main.topic;
+package com.clouds3n.blog.api.main.topic.dto;
 
 import com.clouds3n.blog.api.main.topic.entity.Topic;
 import lombok.Data;

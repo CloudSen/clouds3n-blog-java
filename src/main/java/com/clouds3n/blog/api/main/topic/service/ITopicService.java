@@ -1,7 +1,7 @@
 package com.clouds3n.blog.api.main.topic.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.clouds3n.blog.api.main.topic.TopicDto;
+import com.clouds3n.blog.api.main.topic.dto.TopicDto;
 import com.clouds3n.blog.api.main.topic.entity.Topic;
 
 import java.util.List;

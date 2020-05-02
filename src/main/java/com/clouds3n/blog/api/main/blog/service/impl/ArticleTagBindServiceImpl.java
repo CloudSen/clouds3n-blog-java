@@ -49,7 +49,6 @@ public class ArticleTagBindServiceImpl extends ServiceImpl<ArticleTagBindMapper,
     public Page<ArticleSummaryDto> queryPagedArticleSummary(PaginationDto<ArticleSummaryDto> condition) throws IllegalAccessException {
         // 防止N+1问题，JAVA处理子查询
         // 根据条件查询文章
-        List<ArticleTagConn> articleTagConnList = new ArrayList<>();
         Page<ArticleSummaryDto> resultPage = condition.getPage();
         Page<Article> articlePage = new Page<>();
         articlePage.setCurrent(resultPage.getCurrent()).setSize(resultPage.getSize()).setOrders(resultPage.getOrders());
@@ -58,6 +57,27 @@ public class ArticleTagBindServiceImpl extends ServiceImpl<ArticleTagBindMapper,
         if (CollectionUtils.isEmpty(articleList)) {
             return resultPage.setTotal(0);
         }
+        resultPage.setRecords(buildArticleTagConnList(articleList).stream().map(ArticleSummaryDto::new).collect(Collectors.toList()))
+            .setSize(articlePage.getSize()).setPages(articlePage.getPages()).setTotal(articlePage.getTotal());
+        return resultPage;
+    }
+
+    @Override
+    public Page<ArticleSummaryDto> queryPagedArticleSummaryByTag(ArticleSummaryPageByTagDto condition) {
+        LambdaQueryWrapper<ArticleTagBind> bindWrapper = Wrappers.lambdaQuery(new ArticleTagBind()).eq(ArticleTagBind::getTagId, condition.getTagId()).select(ArticleTagBind::getArticleId);
+        List<ArticleTagBind> articleTagBinds = this.list(bindWrapper);
+        if (CollectionUtils.isEmpty(articleTagBinds)) {
+            return null;
+        }
+        List<String> articleIds = articleTagBinds.stream()
+            .map(ArticleTagBind::getArticleId)
+            .collect(Collectors.toList());
+        return articleTagBindMapper.queryPagedArticleSummary(condition.getPage(), Wrappers.query(new ArticleSummaryDto()).in("a.uuid", articleIds));
+    }
+
+    @Override
+    public List<ArticleTagConn> buildArticleTagConnList(List<Article> articleList) {
+        List<ArticleTagConn> articleTagConnList = new ArrayList<>();
         articleList.forEach(article -> articleTagConnList.add(new ArticleTagConn().setArticleSummaryDto(article.toSummaryDto())));
         // 查询当前页文章相关的标签id，key是articleId
         List<ArticleTagBind> articleTagBindList = this.list(
@@ -77,21 +97,6 @@ public class ArticleTagBindServiceImpl extends ServiceImpl<ArticleTagBindMapper,
         }
         // 文章和标签完整信息
         articleTagConnList.forEach(articleTagConn -> articleTagConn.saveTagDetailList(tagList));
-        resultPage.setRecords(articleTagConnList.stream().map(ArticleSummaryDto::new).collect(Collectors.toList()))
-            .setPages(articlePage.getPages()).setTotal(articlePage.getTotal());
-        return resultPage;
-    }
-
-    @Override
-    public Page<ArticleSummaryDto> queryPagedArticleSummaryByTag(ArticleSummaryPageByTagDto condition) {
-        LambdaQueryWrapper<ArticleTagBind> bindWrapper = Wrappers.lambdaQuery(new ArticleTagBind()).eq(ArticleTagBind::getTagId, condition.getTagId()).select(ArticleTagBind::getArticleId);
-        List<ArticleTagBind> articleTagBinds = this.list(bindWrapper);
-        if (CollectionUtils.isEmpty(articleTagBinds)) {
-            return null;
-        }
-        List<String> articleIds = articleTagBinds.stream()
-            .map(ArticleTagBind::getArticleId)
-            .collect(Collectors.toList());
-        return articleTagBindMapper.queryPagedArticleSummary(condition.getPage(), Wrappers.query(new ArticleSummaryDto()).in("a.uuid", articleIds));
+        return articleTagConnList;
     }
 }
