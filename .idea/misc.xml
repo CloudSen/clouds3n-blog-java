@@ -9,6 +9,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/clouds3n-config-core/pom.xml" />
+        <option value="$PROJECT_DIR$/clouds3n-config-mp-generator/pom.xml" />
         <option value="$PROJECT_DIR$/clouds3n-config-redis/pom.xml" />
       </set>
     </option>

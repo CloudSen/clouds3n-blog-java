@@ -12,10 +12,12 @@
   <artifactId>clouds3n-config</artifactId>
   <description>通用配置</description>
   <modules>
-    <module>clouds3n-config-core</module>
-    <module>clouds3n-config-elastic-search</module>
-    <module>clouds3n-config-redis</module>
-    <module>clouds3n-config-security</module>
+      <module>clouds3n-config-core</module>
+      <module>clouds3n-config-elastic-search</module>
+      <module>clouds3n-config-redis</module>
+      <module>clouds3n-config-security</module>
+      <module>clouds3n-config-mybaits-plus</module>
+      <module>clouds3n-config-mp-generator</module>
   </modules>
   <packaging>pom</packaging>
 

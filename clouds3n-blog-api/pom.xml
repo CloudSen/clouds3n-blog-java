@@ -11,4 +11,24 @@
 
   <artifactId>clouds3n-blog-api</artifactId>
   <description>CloudS3n博客对外API</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.clouds3n</groupId>
+      <artifactId>clouds3n-config-core</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <goals>
+          <goal>repackage</goal>
+        </goals>
+      </plugin>
+    </plugins>
+  </build>
 </project>

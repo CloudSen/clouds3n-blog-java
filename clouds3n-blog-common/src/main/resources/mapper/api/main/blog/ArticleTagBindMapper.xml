@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress SqlResolve, MybatisMapperXmlInspection -->
+<mapper namespace="com.clouds3n.blog.common.mapper.ArticleTagBindMapper">
+
+    <resultMap id="articleSummaryMap" type="com.clouds3n.blog.common.service.dto.ArticleSummaryDto">
+        <id column="uuid" property="uuid"/>
+        <result column="title" property="title"/>
+        <result column="summary" property="summary"/>
+        <result column="color" property="color"/>
+        <result column="textColor" property="summaryTextColor"/>
+        <result column="imgUrlMd" property="imgUrlMd"/>
+        <result column="createTime" property="createTime"/>
+        <result column="updateTime" property="updateTime"/>
+        <collection property="tags" columnPrefix="tag_" ofType="com.clouds3n.blog.common.service.dto.ArticleTagDto">
+            <id column="uuid" property="uuid"/>
+            <result column="name" property="name"/>
+            <result column="color" property="color"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryPagedArticleSummary" resultMap="articleSummaryMap">
+        SELECT a.UUID        uuid,
+               a.title       title,
+               a.summary     summary,
+               a.color       color,
+               a.text_color  textColor,
+               a.img_url_md  imgUrlMd,
+               a.create_time createTime,
+           a.update_time updateTime,
+           t.uuid        tag_uuid,
+           t.name        tag_name,
+           t.color       tag_color
+    FROM article a
+           LEFT JOIN article_tag_bind atb
+                     ON atb.article_id = a.uuid
+           LEFT JOIN article_tag t
+                     ON t.uuid = atb.tag_id ${ew.customSqlSegment}
+      AND atb.deleted = 0
+      AND a.deleted = 0
+      AND t.deleted = 0
+  </select>
+</mapper>

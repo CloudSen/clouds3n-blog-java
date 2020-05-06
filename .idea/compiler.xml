@@ -7,35 +7,42 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="clouds3n-config-mybaits-plus" />
+        <module name="clouds3n-config-mp-generator" />
         <module name="clouds3n-blog-api" />
-        <module name="clouds3n-config-security" />
         <module name="clouds3n-blog-dashboard" />
+        <module name="clouds3n-config-security" />
         <module name="clouds3n-config-core" />
         <module name="clouds3n-config-redis" />
         <module name="clouds3n-config-elastic-search" />
+        <module name="clouds3n-blog-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="clouds3n-blog-api" target="8" />
+      <module name="clouds3n-blog-common" target="8" />
       <module name="clouds3n-blog-dashboard" target="8" />
       <module name="clouds3n-blog-java" target="8" />
       <module name="clouds3n-config" target="8" />
       <module name="clouds3n-config-core" target="8" />
       <module name="clouds3n-config-elastic-search" target="8" />
+      <module name="clouds3n-config-mp-generator" target="8" />
+      <module name="clouds3n-config-mybaits-plus" target="8" />
       <module name="clouds3n-config-redis" target="8" />
       <module name="clouds3n-config-security" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="clouds3n-blog-api" options="-parameters" />
-      <module name="clouds3n-blog-dashboard" options="-parameters" />
+      <module name="clouds3n-blog-api" options="" />
+      <module name="clouds3n-blog-common" options="" />
+      <module name="clouds3n-blog-dashboard" options="" />
       <module name="clouds3n-blog-java" options="" />
       <module name="clouds3n-config" options="" />
-      <module name="clouds3n-config-core" options="-parameters" />
-      <module name="clouds3n-config-elastic-search" options="-parameters" />
-      <module name="clouds3n-config-redis" options="-parameters" />
-      <module name="clouds3n-config-security" options="-parameters" />
+      <module name="clouds3n-config-core" options="" />
+      <module name="clouds3n-config-elastic-search" options="" />
+      <module name="clouds3n-config-redis" options="" />
+      <module name="clouds3n-config-security" options="" />
     </option>
   </component>
 </project>
