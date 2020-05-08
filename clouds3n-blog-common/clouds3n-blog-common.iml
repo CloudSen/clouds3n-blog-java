@@ -25,7 +25,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="clouds3n-config-mybaits-plus" />
+    <orderEntry type="module" module-name="clouds3n-config-mybatis-plus" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-boot-starter:3.3.1" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus:3.3.1" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-extension:3.3.1" level="project" />

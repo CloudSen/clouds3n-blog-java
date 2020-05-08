@@ -7,10 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="clouds3n-config-mybaits-plus" />
         <module name="clouds3n-config-mp-generator" />
         <module name="clouds3n-blog-api" />
         <module name="clouds3n-blog-dashboard" />
+        <module name="clouds3n-config-mybatis-plus" />
         <module name="clouds3n-config-security" />
         <module name="clouds3n-config-core" />
         <module name="clouds3n-config-redis" />
@@ -27,7 +27,7 @@
       <module name="clouds3n-config-core" target="8" />
       <module name="clouds3n-config-elastic-search" target="8" />
       <module name="clouds3n-config-mp-generator" target="8" />
-      <module name="clouds3n-config-mybaits-plus" target="8" />
+      <module name="clouds3n-config-mybatis-plus" target="8" />
       <module name="clouds3n-config-redis" target="8" />
       <module name="clouds3n-config-security" target="8" />
     </bytecodeTargetLevel>

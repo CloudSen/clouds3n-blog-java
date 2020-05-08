@@ -10,7 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/clouds3n-config/clouds3n-config-core/clouds3n-config-core.iml" filepath="$PROJECT_DIR$/clouds3n-config/clouds3n-config-core/clouds3n-config-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/clouds3n-config/clouds3n-config-elastic-search/clouds3n-config-elastic-search.iml" filepath="$PROJECT_DIR$/clouds3n-config/clouds3n-config-elastic-search/clouds3n-config-elastic-search.iml" />
       <module fileurl="file://$PROJECT_DIR$/clouds3n-config/clouds3n-config-mp-generator/clouds3n-config-mp-generator.iml" filepath="$PROJECT_DIR$/clouds3n-config/clouds3n-config-mp-generator/clouds3n-config-mp-generator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/clouds3n-config/clouds3n-config-mybaits-plus/clouds3n-config-mybaits-plus.iml" filepath="$PROJECT_DIR$/clouds3n-config/clouds3n-config-mybaits-plus/clouds3n-config-mybaits-plus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clouds3n-config/clouds3n-config-mybatis-plus/clouds3n-config-mybatis-plus.iml" filepath="$PROJECT_DIR$/clouds3n-config/clouds3n-config-mybatis-plus/clouds3n-config-mybatis-plus.iml" />
       <module fileurl="file://$PROJECT_DIR$/clouds3n-config/clouds3n-config-redis/clouds3n-config-redis.iml" filepath="$PROJECT_DIR$/clouds3n-config/clouds3n-config-redis/clouds3n-config-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/clouds3n-config/clouds3n-config-security/clouds3n-config-security.iml" filepath="$PROJECT_DIR$/clouds3n-config/clouds3n-config-security/clouds3n-config-security.iml" />
     </modules>
