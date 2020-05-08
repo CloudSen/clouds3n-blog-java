@@ -1,6 +1,5 @@
-package com.clouds3n.blog.common.dto;
+package com.clouds3n.config.mybatisplus.query;
 
-import com.clouds3n.blog.common.enums.QueryType;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

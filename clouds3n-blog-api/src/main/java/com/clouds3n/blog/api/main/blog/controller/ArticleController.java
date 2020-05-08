@@ -1,12 +1,12 @@
 package com.clouds3n.blog.api.main.blog.controller;
 
 
-import com.clouds3n.blog.common.dto.PaginationDto;
 import com.clouds3n.blog.common.dto.Res;
 import com.clouds3n.blog.common.service.IArticleService;
 import com.clouds3n.blog.common.service.IArticleTagBindService;
 import com.clouds3n.blog.common.service.dto.ArticleSummaryDto;
 import com.clouds3n.blog.common.service.dto.ArticleSummaryPageByTagDto;
+import com.clouds3n.config.mybatisplus.query.PaginationDto;
 import org.springframework.web.bind.annotation.*;
 
 /**

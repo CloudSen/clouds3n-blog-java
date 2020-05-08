@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.clouds3n.blog.common.dto.PaginationDto;
 import com.clouds3n.blog.common.entity.Article;
 import com.clouds3n.blog.common.entity.ArticleTag;
 import com.clouds3n.blog.common.entity.ArticleTagBind;
@@ -16,6 +15,7 @@ import com.clouds3n.blog.common.service.dto.ArticleSummaryDto;
 import com.clouds3n.blog.common.service.dto.ArticleSummaryPageByTagDto;
 import com.clouds3n.blog.common.service.dto.ArticleTagConn;
 import com.clouds3n.blog.common.utils.QueryWrapperUtil;
+import com.clouds3n.config.mybatisplus.query.PaginationDto;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 

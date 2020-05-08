@@ -1,4 +1,4 @@
-package com.clouds3n.blog.common.enums;
+package com.clouds3n.config.mybatisplus.query;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

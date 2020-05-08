@@ -1,4 +1,4 @@
-package com.clouds3n.blog.common.dto;
+package com.clouds3n.config.mybatisplus.query;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;
@@ -15,6 +15,12 @@ import java.util.List;
 @Accessors(chain = true)
 public class PaginationDto<T> implements Serializable {
     private static final long serialVersionUID = 4289610998417783140L;
+    /**
+     * 分页参数
+     */
     Page<T> page;
+    /**
+     * 查询条件
+     */
     List<QueryConditionDto> conditionList;
 }

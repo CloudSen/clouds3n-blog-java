@@ -2,11 +2,11 @@ package com.clouds3n.blog.dashboard.datasource.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.clouds3n.blog.common.dto.QueryConditionDto;
 import com.clouds3n.blog.common.dto.Res;
 import com.clouds3n.blog.common.entity.DruidProperties;
 import com.clouds3n.blog.common.service.IDruidPropertiesService;
 import com.clouds3n.blog.common.utils.QueryWrapperUtil;
+import com.clouds3n.config.mybatisplus.query.QueryConditionDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

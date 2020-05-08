@@ -36,6 +36,24 @@ spring:
           password: cloudsen
           url: "jdbc:mariadb://localhost:3306/blog?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC"
           driver-class-name: "org.mariadb.jdbc.Driver"
+clouds3n:
+  system:
+    druid-allow-ips: "127.0.0.1,localhost"
+    druid-username: clouds3n
+    druid-password: clouds3n
+    druid-resettable: true
+  thread-pool:
+    common-executor:
+      allow-core-thread-time-out: false
+      core-pool-size: 50
+      max-pool-size: 300
+      queue-capacity: 500
+      keep-alive-seconds: 60
+      thread-name-prefix: "executor-"
+    common-scheduler:
+      pool-size: 30
+      thread-name-prefix: "scheduler-"
+
 ---
 spring:
   profiles: prod
@@ -67,3 +85,20 @@ spring:
           password: cloudsen
           url: "jdbc:mariadb://localhost:3306/blog?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC"
           driver-class-name: "org.mariadb.jdbc.Driver"
+clouds3n:
+  system:
+    druid-allow-ips: "127.0.0.1,localhost"
+    druid-username: clouds3n
+    druid-password: clouds3n
+    druid-resettable: true
+  thread-pool:
+    common-executor:
+      allow-core-thread-time-out: false
+      core-pool-size: 50
+      max-pool-size: 300
+      queue-capacity: 500
+      keep-alive-seconds: 60
+      thread-name-prefix: "executor-"
+    common-scheduler:
+      pool-size: 30
+      thread-name-prefix: "scheduler-"

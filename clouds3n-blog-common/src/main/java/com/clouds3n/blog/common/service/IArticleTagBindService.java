@@ -2,12 +2,12 @@ package com.clouds3n.blog.common.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.clouds3n.blog.common.dto.PaginationDto;
 import com.clouds3n.blog.common.entity.Article;
 import com.clouds3n.blog.common.entity.ArticleTagBind;
 import com.clouds3n.blog.common.service.dto.ArticleSummaryDto;
 import com.clouds3n.blog.common.service.dto.ArticleSummaryPageByTagDto;
 import com.clouds3n.blog.common.service.dto.ArticleTagConn;
+import com.clouds3n.config.mybatisplus.query.PaginationDto;
 
 import java.util.List;
 

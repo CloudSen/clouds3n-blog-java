@@ -1,7 +1,7 @@
 package com.clouds3n.blog.common.utils;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.clouds3n.blog.common.dto.QueryConditionDto;
+import com.clouds3n.config.mybatisplus.query.QueryConditionDto;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;
