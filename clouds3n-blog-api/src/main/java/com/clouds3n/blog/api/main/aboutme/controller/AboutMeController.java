@@ -31,7 +31,7 @@ public class AboutMeController {
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     public Res getAboutMe() throws NotFoundException {
         return Res.ok(
-            OptionalUtil.ofCollectionNullable(aboutMeService.list())
+            OptionalUtil.ofCollectionEmptiable(aboutMeService.list())
                 .orElseThrow(() -> new NotFoundException("未找【到关于我】的数据"))
                 .stream()
                 .limit(1)
