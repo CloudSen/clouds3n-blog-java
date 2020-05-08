@@ -37,8 +37,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public Res otherExceptionHandler(Exception e) {
-        String message = StringUtils.isBlank(e.getCause().getMessage()) ? SERVER_ERROR : e.getCause().getMessage();
         log.error(ExceptionUtils.getStackTrace(e));
-        return Res.error(message);
+        String msg = e.getCause().getMessage();
+        if (StringUtils.isBlank(msg)) {
+            msg = SERVER_ERROR;
+        }
+        return Res.error(msg);
     }
 }
