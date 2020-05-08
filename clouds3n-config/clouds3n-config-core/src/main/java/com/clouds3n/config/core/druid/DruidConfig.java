@@ -2,6 +2,7 @@ package com.clouds3n.config.core.druid;
 
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import com.clouds3n.config.core.properties.SystemProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -13,26 +14,28 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class DruidConfig {
+
+    private static final String URL_MAPPING = "/druid/*";
+    private static final String EXCLUSIONS = "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*";
+    private static final String URL_PATTERNS = "/*";
+    private static final String PARA_EXCLUSIONS = "exclusions";
+
     /**
      * 注册一个StatViewServlet
      *
      * @return ServletRegistrationBean
      */
     @Bean
-    public ServletRegistrationBean<StatViewServlet> druidStatViewServlet() {
-
+    public ServletRegistrationBean<StatViewServlet> druidStatViewServlet(SystemProperties systemProperties) {
         //org.springframework.boot.context.embedded.ServletRegistrationBean提供类的进行注册.
-        ServletRegistrationBean<StatViewServlet> servletRegistrationBean = new ServletRegistrationBean<>(new StatViewServlet(), "/druid/*");
-
+        ServletRegistrationBean<StatViewServlet> servletRegistrationBean = new ServletRegistrationBean<>(new StatViewServlet(), URL_MAPPING);
         //白名单
-        servletRegistrationBean.addInitParameter("allow", "127.0.0.1");
-
+        servletRegistrationBean.addInitParameter("allow", systemProperties.getDruidAllowIps());
         //登录查看信息的账号密码.
-        servletRegistrationBean.addInitParameter("loginUsername", "admin");
-        servletRegistrationBean.addInitParameter("loginPassword", "cloudsen");
-
+        servletRegistrationBean.addInitParameter("loginUsername", systemProperties.getDruidUsername());
+        servletRegistrationBean.addInitParameter("loginPassword", systemProperties.getDruidPassword());
         //是否能够重置数据.
-        servletRegistrationBean.addInitParameter("resetEnable", "true");
+        servletRegistrationBean.addInitParameter("resetEnable", systemProperties.getDruidResettable());
         return servletRegistrationBean;
     }
 
@@ -44,13 +47,10 @@ public class DruidConfig {
     @Bean
     public FilterRegistrationBean<WebStatFilter> druidStatFilter() {
         FilterRegistrationBean<WebStatFilter> filterRegistrationBean = new FilterRegistrationBean<>(new WebStatFilter());
-
         //添加过滤规则.
-        filterRegistrationBean.addUrlPatterns("/*");
-
+        filterRegistrationBean.addUrlPatterns(URL_PATTERNS);
         //添加不需要忽略的格式信息.
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
-
+        filterRegistrationBean.addInitParameter(PARA_EXCLUSIONS, EXCLUSIONS);
         return filterRegistrationBean;
     }
 }
