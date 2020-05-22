@@ -6,15 +6,22 @@
   <!-- 变量配置 -->
   <springProperty scop="context" name="applicationName" source="spring.application.name"/>
   <property name="log.charset" value="UTF-8"/>
-  <property name="log.linux.path" value="/home/admin/web/logs/java/${applicationName}"/>
-  <property name="log.windows.path" value="E:/web/logs/java/${applicationName}"/>
+  <property name="log.linux.info.path" value="/home/admin/web/${applicationName}/logs/info/"/>
+  <property name="log.windows.info.path" value="E:\\web\\${applicationName}\\logs\\info\\"/>
+  <property name="log.linux.error.path" value="/home/admin/web/${applicationName}/logs/error/"/>
+  <property name="log.windows.error.path" value="E:\\web\\${applicationName}\\logs\\error\\"/>
   <property name="log.pattern"
             value="${CONSOLE_LOG_PATTERN:-%clr(${LOG_LEVEL_PATTERN:-%p})-%clr(%d{yyyy-MM-dd HH:mm:ss}){faint}-%clr([%thread]){magenta}-%clr(%logger{40}){cyan}:%msg%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
   <property name="log.error.pattern"
             value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss}){faint}-%clr([%thread]){magenta}-%clr(%logger{40}){cyan}:%msg%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
-  <property name="log.error.file.linux.path" value="${log.linux.path}/${applicationName}.error.%d{yyyy-MM-dd}.%i.log"/>
+  <property name="log.info.file.linux.path"
+            value="${log.linux.info.path}/${applicationName}.info.%d{yyyy-MM-dd}.%i.log"/>
+  <property name="log.info.file.windows.path"
+            value="${log.windows.info.path}/${applicationName}.info.%d{yyyy-MM-dd}.%i.log"/>
+  <property name="log.error.file.linux.path"
+            value="${log.linux.info.path}/${applicationName}.error.%d{yyyy-MM-dd}.%i.log"/>
   <property name="log.error.file.windows.path"
-            value="${log.windows.path}/${applicationName}.error.%d{yyyy-MM-dd}.%i.log"/>
+            value="${log.windows.info.path}/${applicationName}.error.%d{yyyy-MM-dd}.%i.log"/>
 
   <!-- 配置文件名 -->
   <contextName>${applicationName}</contextName>
@@ -38,6 +45,22 @@
         <pattern>${log.pattern}</pattern>
       </encoder>
     </appender>
+    <!-- INFO输出到文件 -->
+    <appender name="info_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <!-- 忽略INFO以下级别的日志 -->
+      <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <level>INFO</level>
+      </filter>
+      <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <fileNamePattern>${log.info.file.windows.path}</fileNamePattern>
+        <maxFileSize>100MB</maxFileSize>
+        <maxHistory>2</maxHistory>
+        <totalSizeCap>1GB</totalSizeCap>
+      </rollingPolicy>
+      <encoder>
+        <pattern>${log.error.pattern}</pattern>
+      </encoder>
+    </appender>
     <!-- ERROR输出到文件 -->
     <appender name="error_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
       <!-- 忽略ERROR以下级别的日志 -->
@@ -46,9 +69,9 @@
       </filter>
       <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
         <fileNamePattern>${log.error.file.windows.path}</fileNamePattern>
-        <maxFileSize>5MB</maxFileSize>
-        <maxHistory>15</maxHistory>
-        <totalSizeCap>5GB</totalSizeCap>
+        <maxFileSize>100MB</maxFileSize>
+        <maxHistory>2</maxHistory>
+        <totalSizeCap>1GB</totalSizeCap>
       </rollingPolicy>
       <encoder>
         <pattern>${log.error.pattern}</pattern>
@@ -56,6 +79,7 @@
     </appender>
     <root level="info">
       <appender-ref ref="console"/>
+      <appender-ref ref="info_file"/>
       <appender-ref ref="error_file"/>
     </root>
     <logger name="com.clouds3n.blog.*" level="info"/>
@@ -64,14 +88,20 @@
 
   <!-- 正式环境 -->
   <springProfile name="prod">
-    <!-- 输出到控制台 -->
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- INFO输出到文件 -->
+    <appender name="info_file" class="ch.qos.logback.core.rolling.RollingFileAppender">
       <!-- 忽略INFO以下级别的日志 -->
       <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
         <level>INFO</level>
       </filter>
+      <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <fileNamePattern>${log.info.file.linux.path}</fileNamePattern>
+        <maxFileSize>100MB</maxFileSize>
+        <maxHistory>1</maxHistory>
+        <totalSizeCap>1GB</totalSizeCap>
+      </rollingPolicy>
       <encoder>
-        <pattern>${log.pattern}</pattern>
+        <pattern>${log.error.pattern}</pattern>
       </encoder>
     </appender>
     <!-- ERROR输出到文件 -->
@@ -82,9 +112,9 @@
       </filter>
       <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
         <fileNamePattern>${log.error.file.linux.path}</fileNamePattern>
-        <maxFileSize>5MB</maxFileSize>
-        <maxHistory>15</maxHistory>
-        <totalSizeCap>5GB</totalSizeCap>
+        <maxFileSize>100MB</maxFileSize>
+        <maxHistory>1</maxHistory>
+        <totalSizeCap>1GB</totalSizeCap>
       </rollingPolicy>
       <encoder>
         <pattern>${log.error.pattern}</pattern>
@@ -92,6 +122,7 @@
     </appender>
     <root level="info">
       <appender-ref ref="console"/>
+      <appender-ref ref="info_file"/>
       <appender-ref ref="error_file"/>
     </root>
     <logger name="com.clouds3n.blog.*" level="info"/>
