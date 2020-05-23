@@ -1,4 +1,4 @@
-package com.clouds3n.blog.dashboard.datasource.controller;
+package com.clouds3n.blog.dashboard.datasource;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

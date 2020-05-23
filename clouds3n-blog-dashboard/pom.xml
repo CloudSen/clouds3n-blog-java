@@ -13,11 +13,16 @@
     <description>CloudS3n博客管理系统</description>
 
     <dependencies>
-        <dependency>
-            <groupId>com.clouds3n</groupId>
-            <artifactId>clouds3n-config-core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+      <dependency>
+        <groupId>com.clouds3n</groupId>
+        <artifactId>clouds3n-config-core</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.clouds3n</groupId>
+        <artifactId>clouds3n-config-security</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
     </dependencies>
 
     <build>
