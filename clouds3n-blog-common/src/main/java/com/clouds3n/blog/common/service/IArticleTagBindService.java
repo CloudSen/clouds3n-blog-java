@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.clouds3n.blog.common.entity.Article;
 import com.clouds3n.blog.common.entity.ArticleTagBind;
+import com.clouds3n.blog.common.service.dto.ArticleFullInfoDto;
 import com.clouds3n.blog.common.service.dto.ArticleSummaryDto;
 import com.clouds3n.blog.common.service.dto.ArticleSummaryPageByTagDto;
 import com.clouds3n.blog.common.service.dto.ArticleTagConn;
@@ -32,6 +33,14 @@ public interface IArticleTagBindService extends IService<ArticleTagBind> {
     Page<ArticleSummaryDto> queryPagedArticleSummary(PaginationDto<ArticleSummaryDto> condition) throws IllegalAccessException;
 
     /**
+     * 通过文章ID，获取文章全部信息
+     *
+     * @param articleId 文章ID
+     * @return 文章全部信息
+     */
+    ArticleFullInfoDto queryArticleFullInfoById(String articleId);
+
+    /**
      * 通过标签id获取文章摘要列表
      *
      * @param condition 分页参数, 标签ID
@@ -46,4 +55,12 @@ public interface IArticleTagBindService extends IService<ArticleTagBind> {
      * @return 文章和标签的关系列表
      */
     List<ArticleTagConn> buildArticleTagConnList(List<Article> articleList);
+
+    /**
+     * 构建某一篇文章与标签的关系
+     *
+     * @param article 某篇文章
+     * @return 文章与标签的关系
+     */
+    ArticleTagConn buildArticleTagConn(Article article);
 }

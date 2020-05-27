@@ -11,6 +11,7 @@ import com.clouds3n.blog.common.mapper.ArticleMapper;
 import com.clouds3n.blog.common.mapper.ArticleTagBindMapper;
 import com.clouds3n.blog.common.mapper.ArticleTagMapper;
 import com.clouds3n.blog.common.service.IArticleTagBindService;
+import com.clouds3n.blog.common.service.dto.ArticleFullInfoDto;
 import com.clouds3n.blog.common.service.dto.ArticleSummaryDto;
 import com.clouds3n.blog.common.service.dto.ArticleSummaryPageByTagDto;
 import com.clouds3n.blog.common.service.dto.ArticleTagConn;
@@ -63,6 +64,14 @@ public class ArticleTagBindServiceImpl extends ServiceImpl<ArticleTagBindMapper,
     }
 
     @Override
+    public ArticleFullInfoDto queryArticleFullInfoById(String articleId) {
+        Article article = articleMapper.selectById(articleId);
+        return new ArticleFullInfoDto(buildArticleTagConn(article))
+            .setContent(article.getContent())
+            .setImgUrl(article.getImgUrl());
+    }
+
+    @Override
     public Page<ArticleSummaryDto> queryPagedArticleSummaryByTag(ArticleSummaryPageByTagDto condition) {
         LambdaQueryWrapper<ArticleTagBind> bindWrapper = Wrappers.lambdaQuery(new ArticleTagBind()).eq(ArticleTagBind::getTagId, condition.getTagId()).select(ArticleTagBind::getArticleId);
         List<ArticleTagBind> articleTagBinds = this.list(bindWrapper);
@@ -98,5 +107,27 @@ public class ArticleTagBindServiceImpl extends ServiceImpl<ArticleTagBindMapper,
         // 文章和标签完整信息
         articleTagConnList.forEach(articleTagConn -> articleTagConn.saveTagDetailList(tagList));
         return articleTagConnList;
+    }
+
+    @Override
+    public ArticleTagConn buildArticleTagConn(Article article) {
+        ArticleTagConn articleTagConn = new ArticleTagConn()
+            .setArticleSummaryDto(article.toSummaryDto());
+        List<ArticleTagBind> articleTagBindList = this.list(
+            Wrappers.lambdaQuery(ArticleTagBind.class)
+                .eq(ArticleTagBind::getArticleId, articleTagConn.getArticleSummaryDto().getUuid())
+        );
+        articleTagConn.saveTagIdList(articleTagBindList);
+        final List<ArticleTag> tagList = new ArrayList<>();
+        if (CollectionUtils.isNotEmpty(articleTagBindList)) {
+            tagList.addAll(
+                articleTagMapper.selectList(
+                    Wrappers.lambdaQuery(ArticleTag.class)
+                        .in(ArticleTag::getUuid, articleTagBindList.stream().map(ArticleTagBind::getTagId).collect(Collectors.toList()))
+                )
+            );
+        }
+        articleTagConn.saveTagDetailList(tagList);
+        return articleTagConn;
     }
 }

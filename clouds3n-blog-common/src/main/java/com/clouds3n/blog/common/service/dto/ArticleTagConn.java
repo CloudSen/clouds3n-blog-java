@@ -33,6 +33,12 @@ public class ArticleTagConn {
         this.articleTagDtoList = tagList;
     }
 
+    public void saveTagIdList(List<ArticleTagBind> articleTagBindList) {
+        List<ArticleTagDto> tagList = new ArrayList<>();
+        articleTagBindList.forEach(articleTagBind -> tagList.add(new ArticleTagDto().setUuid(articleTagBind.getTagId())));
+        this.articleTagDtoList = tagList;
+    }
+
     public void saveTagDetailList(List<ArticleTag> tagList) {
         this.articleTagDtoList = tagList.stream()
             .filter(articleTag -> this.articleTagDtoList.stream().map(ArticleTagDto::getUuid).collect(Collectors.toList()).contains(articleTag.getUuid()))

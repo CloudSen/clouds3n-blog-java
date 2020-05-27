@@ -5,10 +5,7 @@ import com.clouds3n.blog.common.service.IArticleTagBindService;
 import com.clouds3n.blog.common.service.dto.ArticleSummaryDto;
 import com.clouds3n.blog.common.utils.ColumnUtil;
 import com.clouds3n.config.mybatisplus.query.PaginationDto;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author CloudS3n
@@ -28,5 +25,10 @@ public class ArticleMgmtController {
     public Res queryPage(@RequestBody PaginationDto<ArticleSummaryDto> condition) throws IllegalAccessException {
         condition.getPage().getOrders().forEach(orderItem -> orderItem.setColumn(ColumnUtil.toDbColumn(orderItem.getColumn())));
         return Res.ok(articleTagBindService.queryPagedArticleSummary(condition));
+    }
+
+    @GetMapping("/{articleId}")
+    public Res getArticleFullInfo(@PathVariable("articleId") String articleId) {
+        return Res.ok(articleTagBindService.queryArticleFullInfoById(articleId));
     }
 }
