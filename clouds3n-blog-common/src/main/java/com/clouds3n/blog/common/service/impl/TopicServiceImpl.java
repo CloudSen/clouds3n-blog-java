@@ -8,6 +8,7 @@ import com.clouds3n.blog.common.entity.Topic;
 import com.clouds3n.blog.common.mapper.TopicMapper;
 import com.clouds3n.blog.common.service.ITopicService;
 import com.clouds3n.blog.common.service.dto.TopicDto;
+import com.clouds3n.blog.common.service.dto.TopicSimpleDto;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +42,16 @@ public class TopicServiceImpl extends ServiceImpl<TopicMapper, Topic> implements
             }
         }));
         return topicList;
+    }
+
+    @Override
+    public List<TopicSimpleDto> getAllSubTopicList() {
+        List<Topic> subTopicList = this.list(
+            Wrappers.lambdaQuery(Topic.class).ne(Topic::getParentUuid, SysCode.NEGATIVE_STR_1)
+        );
+        if (CollectionUtils.isEmpty(subTopicList)) {
+            return null;
+        }
+        return subTopicList.stream().map(TopicSimpleDto::new).collect(Collectors.toList());
     }
 }

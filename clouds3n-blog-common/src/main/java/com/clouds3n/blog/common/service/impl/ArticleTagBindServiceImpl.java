@@ -4,17 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.clouds3n.blog.common.entity.Article;
-import com.clouds3n.blog.common.entity.ArticleTag;
-import com.clouds3n.blog.common.entity.ArticleTagBind;
-import com.clouds3n.blog.common.mapper.ArticleMapper;
-import com.clouds3n.blog.common.mapper.ArticleTagBindMapper;
-import com.clouds3n.blog.common.mapper.ArticleTagMapper;
+import com.clouds3n.blog.common.entity.*;
+import com.clouds3n.blog.common.mapper.*;
 import com.clouds3n.blog.common.service.IArticleTagBindService;
-import com.clouds3n.blog.common.service.dto.ArticleFullInfoDto;
-import com.clouds3n.blog.common.service.dto.ArticleSummaryDto;
-import com.clouds3n.blog.common.service.dto.ArticleSummaryPageByTagDto;
-import com.clouds3n.blog.common.service.dto.ArticleTagConn;
+import com.clouds3n.blog.common.service.dto.*;
 import com.clouds3n.blog.common.utils.QueryWrapperUtil;
 import com.clouds3n.config.mybatisplus.query.PaginationDto;
 import org.apache.commons.collections4.CollectionUtils;
@@ -38,12 +31,16 @@ public class ArticleTagBindServiceImpl extends ServiceImpl<ArticleTagBindMapper,
     private final ArticleTagBindMapper articleTagBindMapper;
     private final ArticleMapper articleMapper;
     private final ArticleTagMapper articleTagMapper;
+    private final TopicMapper topicMapper;
+    private final TopicArticleBindMapper topicArticleBindMapper;
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    public ArticleTagBindServiceImpl(ArticleTagBindMapper articleTagBindMapper, ArticleMapper articleMapper, ArticleTagMapper articleTagMapper) {
+    public ArticleTagBindServiceImpl(ArticleTagBindMapper articleTagBindMapper, ArticleMapper articleMapper, ArticleTagMapper articleTagMapper, TopicMapper topicMapper, TopicArticleBindMapper topicArticleBindMapper) {
         this.articleTagBindMapper = articleTagBindMapper;
         this.articleMapper = articleMapper;
         this.articleTagMapper = articleTagMapper;
+        this.topicMapper = topicMapper;
+        this.topicArticleBindMapper = topicArticleBindMapper;
     }
 
     @Override
@@ -58,7 +55,9 @@ public class ArticleTagBindServiceImpl extends ServiceImpl<ArticleTagBindMapper,
         if (CollectionUtils.isEmpty(articleList)) {
             return resultPage.setTotal(0);
         }
-        resultPage.setRecords(buildArticleTagConnList(articleList).stream().map(ArticleSummaryDto::new).collect(Collectors.toList()))
+        List<ArticleTagConn> articleTagConnList = buildArticleTagConnList(articleList);
+        List<ArticleTopicConn> articleTopicConnList = buildArticleTopicConnList(articleList);
+        resultPage.setRecords(ArticleSummaryDto.buildArticleSummaryDtoList(articleTagConnList, articleTopicConnList))
             .setSize(articlePage.getSize()).setPages(articlePage.getPages()).setTotal(articlePage.getTotal());
         return resultPage;
     }
@@ -66,7 +65,9 @@ public class ArticleTagBindServiceImpl extends ServiceImpl<ArticleTagBindMapper,
     @Override
     public ArticleFullInfoDto queryArticleFullInfoById(String articleId) {
         Article article = articleMapper.selectById(articleId);
-        return new ArticleFullInfoDto(buildArticleTagConn(article))
+        ArticleTagConn articleTagConn = buildArticleTagConn(article);
+        ArticleTopicConn articleTopicConn = buildArticleTopicConn(article);
+        return ArticleFullInfoDto.buildArticleFullInfoDto(articleTagConn, articleTopicConn)
             .setContent(article.getContent())
             .setImgUrl(article.getImgUrl());
     }
@@ -110,15 +111,40 @@ public class ArticleTagBindServiceImpl extends ServiceImpl<ArticleTagBindMapper,
     }
 
     @Override
+    public List<ArticleTopicConn> buildArticleTopicConnList(List<Article> articleList) {
+        List<ArticleTopicConn> articleTopicConnList = new ArrayList<>();
+        articleList.forEach(article -> articleTopicConnList.add(new ArticleTopicConn().setArticleSummaryDto(article.toSummaryDto())));
+        // 查询当前页文章相关的专题id，key是articleId
+        List<TopicArticleBind> topicArticleBindList = topicArticleBindMapper.selectList(
+            Wrappers.lambdaQuery(TopicArticleBind.class)
+                .in(TopicArticleBind::getTopicUuid, articleList.stream().map(Article::getUuid).collect(Collectors.toList()))
+        );
+        articleTopicConnList.forEach(articleTopicConn -> articleTopicConn.saveTagIdList(topicArticleBindList.stream().collect(Collectors.groupingBy(TopicArticleBind::getArticleUuid))));
+        // 查询当前页文章的全部专题
+        final List<Topic> topicList = new ArrayList<>();
+        if (CollectionUtils.isNotEmpty(topicArticleBindList)) {
+            topicList.addAll(
+                topicMapper.selectList(
+                    Wrappers.lambdaQuery(Topic.class)
+                        .in(Topic::getUuid, topicArticleBindList.stream().map(TopicArticleBind::getTopicUuid).collect(Collectors.toList()))
+                )
+            );
+        }
+        // 文章和标签完整信息
+        articleTopicConnList.forEach(articleTopicConn -> articleTopicConn.saveTagDetailList(topicList));
+        return articleTopicConnList;
+    }
+
+    @Override
     public ArticleTagConn buildArticleTagConn(Article article) {
         ArticleTagConn articleTagConn = new ArticleTagConn()
             .setArticleSummaryDto(article.toSummaryDto());
+        final List<ArticleTag> tagList = new ArrayList<>();
         List<ArticleTagBind> articleTagBindList = this.list(
             Wrappers.lambdaQuery(ArticleTagBind.class)
                 .eq(ArticleTagBind::getArticleId, articleTagConn.getArticleSummaryDto().getUuid())
         );
         articleTagConn.saveTagIdList(articleTagBindList);
-        final List<ArticleTag> tagList = new ArrayList<>();
         if (CollectionUtils.isNotEmpty(articleTagBindList)) {
             tagList.addAll(
                 articleTagMapper.selectList(
@@ -129,5 +155,27 @@ public class ArticleTagBindServiceImpl extends ServiceImpl<ArticleTagBindMapper,
         }
         articleTagConn.saveTagDetailList(tagList);
         return articleTagConn;
+    }
+
+    @Override
+    public ArticleTopicConn buildArticleTopicConn(Article article) {
+        ArticleTopicConn articleTopicConn = new ArticleTopicConn()
+            .setArticleSummaryDto(article.toSummaryDto());
+        final List<Topic> topicList = new ArrayList<>();
+        List<TopicArticleBind> topicArticleBindList = topicArticleBindMapper.selectList(
+            Wrappers.lambdaQuery(TopicArticleBind.class)
+                .eq(TopicArticleBind::getArticleUuid, articleTopicConn.getArticleSummaryDto().getUuid())
+        );
+        articleTopicConn.saveTagIdList(topicArticleBindList);
+        if (CollectionUtils.isNotEmpty(topicArticleBindList)) {
+            topicList.addAll(
+                topicMapper.selectList(
+                    Wrappers.lambdaQuery(Topic.class)
+                        .in(Topic::getUuid, topicArticleBindList.stream().map(TopicArticleBind::getTopicUuid).collect(Collectors.toList()))
+                )
+            );
+        }
+        articleTopicConn.saveTagDetailList(topicList);
+        return articleTopicConn;
     }
 }

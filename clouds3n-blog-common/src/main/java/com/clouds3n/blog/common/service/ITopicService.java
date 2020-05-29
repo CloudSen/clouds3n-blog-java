@@ -3,6 +3,7 @@ package com.clouds3n.blog.common.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.clouds3n.blog.common.entity.Topic;
 import com.clouds3n.blog.common.service.dto.TopicDto;
+import com.clouds3n.blog.common.service.dto.TopicSimpleDto;
 
 import java.util.List;
 
@@ -22,4 +23,11 @@ public interface ITopicService extends IService<Topic> {
      * @return 具有父子关系的专题列表
      */
     List<TopicDto> buildTopicList();
+
+    /**
+     * 获取所有子专题列表
+     *
+     * @return 所有子专题列表
+     */
+    List<TopicSimpleDto> getAllSubTopicList();
 }

@@ -14,11 +14,26 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @NoArgsConstructor
 public class ArticleFullInfoDto extends ArticleSummaryDto {
+
     private static final long serialVersionUID = -75158197524965030L;
     private String content;
     private String imgUrl;
 
-    public ArticleFullInfoDto(ArticleTagConn article) {
-        super(article);
+    public static ArticleFullInfoDto buildArticleFullInfoDto(ArticleTagConn articleTagConn, ArticleTopicConn articleTopicConn) {
+        ArticleSummaryDto articleSummaryDto = articleTagConn.getArticleSummaryDto();
+        ArticleFullInfoDto articleFullInfoDto = new ArticleFullInfoDto();
+        articleFullInfoDto.setContent(null)
+            .setImgUrl(null)
+            .setUuid(articleSummaryDto.getUuid())
+            .setColor(articleSummaryDto.getColor())
+            .setImgUrlMd(articleSummaryDto.getImgUrlMd())
+            .setSummary(articleSummaryDto.getSummary())
+            .setSummaryTextColor(articleSummaryDto.getSummaryTextColor())
+            .setCreateTime(articleSummaryDto.getCreateTime())
+            .setUpdateTime(articleSummaryDto.getUpdateTime())
+            .setTitle(articleSummaryDto.getTitle())
+            .setTags(articleTagConn.getArticleTagDtoList())
+            .setTopics(articleTopicConn.getTopicDtoList());
+        return articleFullInfoDto;
     }
 }

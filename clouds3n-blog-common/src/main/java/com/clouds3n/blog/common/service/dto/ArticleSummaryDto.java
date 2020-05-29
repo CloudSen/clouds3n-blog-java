@@ -4,9 +4,11 @@ import com.clouds3n.blog.common.entity.Article;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +31,7 @@ public class ArticleSummaryDto implements Serializable {
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
     private List<ArticleTagDto> tags;
+    private List<TopicDto> topics;
 
     public ArticleSummaryDto(Article article) {
         this.uuid = article.getUuid();
@@ -52,5 +55,27 @@ public class ArticleSummaryDto implements Serializable {
         this.createTime = summarySlot.getCreateTime();
         this.updateTime = summarySlot.getUpdateTime();
         this.tags = article.getArticleTagDtoList();
+    }
+
+    public static ArticleSummaryDto buildArticleSummaryDto(ArticleTagConn articleTagConn, ArticleTopicConn articleTopicConn) {
+        return articleTagConn.getArticleSummaryDto()
+            .setTags(articleTagConn.getArticleTagDtoList())
+            .setTopics(articleTopicConn.getTopicDtoList());
+    }
+
+    public static List<ArticleSummaryDto> buildArticleSummaryDtoList(List<ArticleTagConn> articleTagConnList, List<ArticleTopicConn> articleTopicConnList) {
+        List<ArticleSummaryDto> articleSummaryDtos = new ArrayList<>();
+        articleTagConnList.forEach(articleTagConn -> {
+            ArticleSummaryDto articleSummaryDto = articleTagConn.getArticleSummaryDto()
+                .setTags(articleTagConn.getArticleTagDtoList());
+            List<TopicDto> topicDtos = articleTopicConnList.stream()
+                .filter(articleTopicConn -> StringUtils.equals(articleTopicConn.getArticleSummaryDto().getUuid(), articleSummaryDto.getUuid()))
+                .findFirst()
+                .map(ArticleTopicConn::getTopicDtoList)
+                .orElse(null);
+            articleSummaryDto.setTopics(topicDtos);
+            articleSummaryDtos.add(articleSummaryDto);
+        });
+        return articleSummaryDtos;
     }
 }

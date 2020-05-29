@@ -30,7 +30,7 @@ public class TopicController {
     }
 
     @GetMapping("")
-    public Res getAll() {
+    public Res getFullTopicInfo() {
         return Res.ok(topicService.buildTopicList());
     }
 
