@@ -2,6 +2,7 @@ package com.clouds3n.blog.common.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.clouds3n.blog.common.entity.Article;
+import com.clouds3n.blog.common.service.dto.ArticleFullInfoDto;
 
 /**
  * <p>
@@ -13,4 +14,17 @@ import com.clouds3n.blog.common.entity.Article;
  */
 public interface IArticleService extends IService<Article> {
 
+    /**
+     * 保存文章以及文章与标签，文章与主题的关系
+     *
+     * @param articleFullInfoDto 文章信息
+     */
+    void saveOrUpdateFullArticle(ArticleFullInfoDto articleFullInfoDto);
+
+    /**
+     * 删除某篇文章（物理删除）
+     *
+     * @param articleId 文章ID
+     */
+    void deleteOneArticle(String articleId);
 }

@@ -1,9 +1,12 @@
 package com.clouds3n.blog.common.service.dto;
 
+import com.clouds3n.blog.common.entity.Article;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+
+import java.time.LocalDateTime;
 
 /**
  * @author CloudS3n
@@ -35,5 +38,18 @@ public class ArticleFullInfoDto extends ArticleSummaryDto {
             .setTags(articleTagConn.getArticleTagDtoList())
             .setTopics(articleTopicConn.getTopicDtoList());
         return articleFullInfoDto;
+    }
+
+    public Article toArticleEntity() {
+        return new Article()
+            .setUuid(this.getUuid())
+            .setTitle(this.getTitle())
+            .setSummary(this.getSummary())
+            .setImgUrlMd(this.getImgUrlMd())
+            .setImgUrl(this.getImgUrl())
+            .setContent(this.getContent())
+            .setColor(this.getColor())
+            .setTextColor(this.getSummaryTextColor())
+            .setUpdateTime(LocalDateTime.now());
     }
 }
