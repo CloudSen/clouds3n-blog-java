@@ -29,4 +29,9 @@ public class MonitorController {
     public Res getMonitorCardData() {
         return Res.ok(monitorService.getMonitorCardData());
     }
+
+    @GetMapping("/tag-pie-data")
+    public Res getTagPieData() {
+        return Res.ok(monitorService.getTagPieData());
+    }
 }

@@ -2,6 +2,7 @@ package com.clouds3n.blog.dashboard.monitor.service;
 
 import com.clouds3n.blog.dashboard.monitor.dto.MonitorCardDto;
 import com.clouds3n.blog.dashboard.monitor.dto.MonitorDataDto;
+import com.clouds3n.blog.dashboard.monitor.dto.TagPieDataDto;
 
 import java.util.List;
 
@@ -24,4 +25,11 @@ public interface MonitorService {
      * @return MonitorCardDto列表
      */
     List<MonitorCardDto> getMonitorCardData();
+
+    /**
+     * 标签饼图数据
+     *
+     * @return 每个标签的文章总数
+     */
+    List<TagPieDataDto> getTagPieData();
 }
