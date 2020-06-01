@@ -19,9 +19,9 @@
   <property name="log.info.file.windows.path"
             value="${log.windows.info.path}/${applicationName}.info.%d{yyyy-MM-dd}.%i.log"/>
   <property name="log.error.file.linux.path"
-            value="${log.linux.info.path}/${applicationName}.error.%d{yyyy-MM-dd}.%i.log"/>
+            value="${log.linux.error.path}/${applicationName}.error.%d{yyyy-MM-dd}.%i.log"/>
   <property name="log.error.file.windows.path"
-            value="${log.windows.info.path}/${applicationName}.error.%d{yyyy-MM-dd}.%i.log"/>
+            value="${log.windows.error.path}/${applicationName}.error.%d{yyyy-MM-dd}.%i.log"/>
 
   <!-- 配置文件名 -->
   <contextName>${applicationName}</contextName>
@@ -121,7 +121,6 @@
       </encoder>
     </appender>
     <root level="info">
-      <appender-ref ref="console"/>
       <appender-ref ref="info_file"/>
       <appender-ref ref="error_file"/>
     </root>

@@ -14,8 +14,8 @@ public class QueryWrapperUtil {
 
     public static <T> QueryWrapper<T> parseWhereSql(List<QueryConditionDto> conditionList, T type) throws IllegalAccessException {
         QueryWrapper<T> queryWrapper = new QueryWrapper<>();
-        conditionList.forEach(queryConditionDto -> queryConditionDto.setColumn(ColumnUtil.toDbColumn(queryConditionDto.getColumn())));
         if (CollectionUtils.isNotEmpty(conditionList)) {
+            conditionList.forEach(queryConditionDto -> queryConditionDto.setColumn(ColumnUtil.toDbColumn(queryConditionDto.getColumn())));
             for (QueryConditionDto queryCondition : conditionList) {
                 switch (queryCondition.getQueryType()) {
                     case EQ:
