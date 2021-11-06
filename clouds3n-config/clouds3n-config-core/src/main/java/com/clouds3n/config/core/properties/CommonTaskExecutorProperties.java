@@ -21,13 +21,13 @@ public class CommonTaskExecutorProperties {
     @NotBlank
     private String threadNamePrefix;
 
-    @Range(min = 30, max = Integer.MAX_VALUE)
+    @Range(min = 1, max = Integer.MAX_VALUE)
     private Integer corePoolSize;
 
-    @Range(min = 30, max = Integer.MAX_VALUE)
+    @Range(min = 1, max = Integer.MAX_VALUE)
     private Integer maxPoolSize;
 
-    @Range(min = 30, max = Integer.MAX_VALUE)
+    @Range(min = 1, max = Integer.MAX_VALUE)
     private Integer queueCapacity;
 
     private Boolean allowCoreThreadTimeOut;

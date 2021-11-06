@@ -20,12 +20,12 @@
     <java.version>8</java.version>
     <spring.boot.version>2.2.6.RELEASE</spring.boot.version>
     <maven.plugin.compiler.version>3.8.0</maven.plugin.compiler.version>
-    <mybatis.plus.version>3.3.2</mybatis.plus.version>
-    <dynamic.datasource.version>3.1.1</dynamic.datasource.version>
+    <mybatis.plus.version>3.4.3</mybatis.plus.version>
+    <dynamic.datasource.version>3.4.1</dynamic.datasource.version>
     <commons.collections.version>4.4</commons.collections.version>
     <commons.lang3.version>3.9</commons.lang3.version>
-    <mariadb.connector.version>2.5.3</mariadb.connector.version>
-    <druid.starter.version>1.1.21</druid.starter.version>
+    <mysql.connector.version>5.1.49</mysql.connector.version>
+    <druid.starter.version>1.2.8</druid.starter.version>
     <p6spy.version>3.8.0</p6spy.version>
     <fastjson.version>1.2.62</fastjson.version>
     <quartz.version>2.3.2</quartz.version>
@@ -39,9 +39,9 @@
         <version>${spring.boot.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.mariadb.jdbc</groupId>
-        <artifactId>mariadb-java-client</artifactId>
-        <version>${mariadb.connector.version}</version>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.connector.version}</version>
       </dependency>
       <dependency>
         <groupId>com.baomidou</groupId>
