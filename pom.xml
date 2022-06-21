@@ -24,7 +24,7 @@
     <dynamic.datasource.version>3.4.1</dynamic.datasource.version>
     <commons.collections.version>4.4</commons.collections.version>
     <commons.lang3.version>3.9</commons.lang3.version>
-    <mysql.connector.version>5.1.49</mysql.connector.version>
+    <mysql.connector.version>8.0.28</mysql.connector.version>
     <druid.starter.version>1.2.8</druid.starter.version>
     <p6spy.version>3.8.0</p6spy.version>
     <fastjson.version>1.2.62</fastjson.version>
